@@ -1,0 +1,75 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:539: checking if building in the top-level directory
+configure:573: checking for a BSD compatible install
+configure:629: checking host system type
+configure:693: checking if --enable-debug option specified
+configure:715: checking for cc
+configure:743: checking for gcc
+configure:771: checking for gcc
+configure:848: checking whether the C compiler (gcc -O ) works
+configure:862: gcc -o conftest -O   conftest.c  1>&5
+configure:882: checking whether the C compiler (gcc -O ) is a cross-compiler
+configure:887: checking whether we are using GNU C
+configure:911: checking whether gcc accepts -g
+configure:940: checking if --enable-diagnostic option specified
+configure:958: checking if --enable-cxx option specified
+configure:1112: checking if --enable-compat185 option specified
+configure:1128: checking if --enable-dump185 option specified
+configure:1145: checking for ar
+configure:1180: checking for chmod
+configure:1215: checking for cp
+configure:1250: checking for mkdir
+configure:1285: checking for ranlib
+configure:1317: checking for rm
+configure:1352: checking for sh
+configure:1387: checking for strip
+configure:1421: checking how to run the C preprocessor
+configure:1482: checking for ANSI C header files
+configure:1586: checking for ssize_t
+configure:1619: checking whether byte ordering is bigendian
+configure:1709: checking for working const
+configure:1784: checking for st_blksize in struct stat
+configure:1818: checking whether stat file-mode macros are broken
+configure:1874: checking for mode_t
+configure:1907: checking for off_t
+configure:1940: checking for pid_t
+configure:1973: checking for size_t
+configure:2011: checking for dirent.h that defines DIR
+configure:2049: checking for opendir in -ldir
+configure:2135: checking for sys/select.h
+configure:2175: checking for sys/time.h
+configure:2215: checking for getcwd
+configure:2215: checking for getopt
+configure:2215: checking for memcmp
+configure:2215: checking for memcpy
+configure:2215: checking for memmove
+configure:2272: checking for raise
+configure:2272: checking for snprintf
+configure:2272: checking for strerror
+configure:2272: checking for strsep
+configure:2272: checking for vsnprintf
+configure:2330: checking for getuid
+configure:2330: checking for pread
+configure:2330: checking for pstat_getdynamic
+configure:2330: checking for sysconf
+configure:2398: checking for shmget
+configure:2461: checking for mmap
+configure:2461: checking for munmap
+configure:2523: checking for qsort
+configure:2579: checking for select
+configure:2634: checking for sigfillset
+configure:2667: checking for int type sprintf return value
+configure:2702: checking if --disable-bigfile option specified
+configure:2724: checking for spinlocks
+configure:3177: checking for u_char
+configure:3208: checking for u_short
+configure:3239: checking for u_int
+configure:3270: checking for u_long
+configure:3301: checking for u_int8_t
+configure:3354: checking for u_int16_t
+configure:3426: checking for int16_t
+configure:3498: checking for u_int32_t
+configure:3570: checking for int32_t
+configure:3641: checking if --enable-test option specified

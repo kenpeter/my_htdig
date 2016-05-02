@@ -1,0 +1,51 @@
+##
+## Makefile.config
+##
+## This file is part of ht://Dig
+##
+include $(top_builddir)/CONFIG
+
+#
+# You should not have to modify anything below this point.
+#
+
+SHELL=                  /bin/sh
+
+#
+# Locations of programs
+#
+CXX=		@CXX@
+CC=		@CC@
+RANLIB=		@RANLIB@
+MAKEDEPEND=	@HTDIG_TOP@/makedp
+FIND=		@FIND@
+AR=		@AR@
+PDF_PARSER=	@PDF_PARSER@
+SENDMAIL=	@SENDMAIL@
+
+DEFINES=	-DDEFAULT_CONFIG_FILE=\"$(DEFAULT_CONFIG_FILE)\"
+LIBDIRS=	-L../htlib -L../htcommon -L../db/dist -L/usr/lib
+INCS=		-I$(top_srcdir)/htlib -I$(top_srcdir)/htcommon \
+		-I../db/dist -I../include
+HTLIBS=		../htcommon/libcommon.a \
+		../htlib/libht.a \
+		../db/dist/libdb.a
+LIBS=		$(HTLIBS) @LIBS@
+
+DIST=		@PACKAGE@-@VERSION@
+DISTDIR=	$(top_srcdir)/../$(DIST)
+
+CFLAGS=		@CFLAGS@
+CPPFLAGS=	@CPPFLAGS@
+CXXFLAGS=	@CXXFLAGS@
+ALL_CFLAGS=	$(LOCAL_DEFINES) $(DEFINES) $(INCS) $(CFLAGS)
+ALL_CXXFLAGS=	$(LOCAL_DEFINES) $(DEFINES) $(INCS) $(CXXFLAGS)
+LDFLAGS=	@LDFLAGS@ $(LIBDIRS)
+
+.SUFFIXES: .cc
+.cc.o:
+	$(CXX) -c $(ALL_CXXFLAGS) $<
+
+.c.o:
+	$(CC) -c $(CPPFLAGS) $(ALL_CFLAGS) $<
+

@@ -1,0 +1,167 @@
+# Main Makefile for ht://Dig
+# Copyright (c) 1995-1999 The ht://Dig Group
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+   
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+   
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+top_srcdir=             @top_srcdir@
+srcdir=                 @srcdir@
+VPATH=                  @srcdir@
+INSTALL=		@INSTALL@
+INSTALL_PROGRAM=	@INSTALL_PROGRAM@
+INSTALL_SCRIPT=         @INSTALL_SCRIPT@
+INSTALL_DATA=		@INSTALL_DATA@
+
+top_builddir= .
+include Makefile.config
+
+DIRS=		db/dist \
+		htlib htcommon htfuzzy htdig \
+		htsearch htmerge htnotify
+INSTALLDIRS=	htfuzzy htdig \
+		htsearch htmerge htnotify
+HTDIRS=		htlib htcommon htfuzzy htdig \
+		htsearch htmerge htnotify
+CREATEDIRS=	$(BIN_DIR) $(CONFIG_DIR) $(COMMON_DIR) $(DATABASE_DIR) \
+		$(IMAGE_DIR) $(CGIBIN_DIR) $(SEARCH_DIR)
+NO_DIST=	BETA.DIST htdig/*.conf htmerge/*.conf htsearch/*.conf \
+		htfuzzy/*.conf *.gz */*.gz *~ */*~ mailarchive \
+		.\#* */.\#* */*/.\#* \
+		CVS */CVS */*/CVS */*/*/CVS
+IMAGES=		button1.gif button2.gif button3.gif button4.gif button5.gif \
+		button6.gif button7.gif button8.gif button9.gif buttonl.gif \
+		buttonr.gif button10.gif htdig.gif star.gif star_blank.gif \
+		button1.png button2.png button3.png button4.png button5.png \
+                button6.png button7.png button8.png button9.png buttonl.png \
+                buttonr.png button10.png htdig.png star.png star_blank.png
+COMMONHTML=	header.html footer.html wrapper.html nomatch.html syntax.html \
+		long.html short.html
+COMMONDICT=	bad_words english.0 english.aff synonyms
+
+all:
+	@for i in $(DIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) all) \
+		|| case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+clean:
+	rm -f *~
+	@for i in $(DIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) clean) \
+		|| case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+mostlyclean:
+	rm -f *~
+	@for i in $(HTDIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) mostlyclean) \
+		|| case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+
+
+distclean:
+	rm -rf config.cache config.status config.log config.h \
+		makedp *.gz test *~ include/htconfig.h
+	@for i in $(DIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) distclean) \
+		|| case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+	rm -f Makefile Makefile.config stamp-h
+
+install:	all
+	@echo "Installing ht://Dig"
+	@echo ""
+	@echo "Creating directories (if needed)..."
+	-@for i in $(CREATEDIRS); do \
+		$(top_srcdir)/mkinstalldirs $(INSTALL_ROOT)$$i; \
+	done && test -z "$$fail"
+	@echo ""
+	@echo "Installing individual programs..."
+	@for i in $(INSTALLDIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) install); \
+	done && test -z "$$fail"
+	@echo ""
+	@echo "Installing default configuration files..."
+	@if [ ! -f $(INSTALL_ROOT)$(DEFAULT_CONFIG_FILE) ]; then sed -e s%\@DATABASE_DIR\@%$(DATABASE_DIR)% -e s%\@IMAGEDIR\@%$(IMAGE_URL_PREFIX)% $(top_srcdir)/installdir/htdig.conf >$(INSTALL_ROOT)$(DEFAULT_CONFIG_FILE); echo $(INSTALL_ROOT)$(DEFAULT_CONFIG_FILE);fi
+	@if [ ! -f $(INSTALL_ROOT)$(SEARCH_DIR)/$(SEARCH_FORM) ]; then sed -e s%\@IMAGEDIR\@%$(IMAGE_URL_PREFIX)% $(top_srcdir)/installdir/search.html >$(INSTALL_ROOT)$(SEARCH_DIR)/$(SEARCH_FORM); echo $(INSTALL_ROOT)$(SEARCH_DIR)/$(SEARCH_FORM);fi
+	@for i in $(COMMONHTML); do \
+		if [ ! -f $(INSTALL_ROOT)$(COMMON_DIR)/$$i ]; then sed -e s%\@IMAGEDIR\@%$(IMAGE_URL_PREFIX)% $(top_srcdir)/installdir/$$i >$(INSTALL_ROOT)$(COMMON_DIR)/$$i; echo $(INSTALL_ROOT)$(COMMON_DIR)/$$i;fi; \
+	done && test -z "$$fail"
+	@for i in $(COMMONDICT); do \
+		if [ ! -f $(INSTALL_ROOT)$(COMMON_DIR)/$$i ]; then $(INSTALL_DATA) $(top_srcdir)/installdir/$$i $(INSTALL_ROOT)$(COMMON_DIR)/$$i; echo $(INSTALL_ROOT)$(COMMON_DIR)/$$i; fi; \
+	done && test -z "$$fail"
+	@echo "Installing images..."
+	@for i in $(IMAGES); do \
+		if [ ! -f $(INSTALL_ROOT)$(IMAGE_DIR)/$$i ]; then $(INSTALL_DATA) $(top_srcdir)/installdir/$$i $(INSTALL_ROOT)$(IMAGE_DIR)/$$i; echo $(INSTALL_ROOT)$(IMAGE_DIR)/$$i;fi; \
+	done && test -z "$$fail"
+	@echo "Creating rundig script..."
+	@if [ ! -f $(INSTALL_ROOT)$(BIN_DIR)/rundig ]; then \
+		sed -e s%\@BIN_DIR\@%$(BIN_DIR)% -e s%\@COMMON_DIR\@%$(COMMON_DIR)% -e s%\@DATABASE_DIR\@%$(DATABASE_DIR)% $(top_srcdir)/installdir/rundig >$(INSTALL_ROOT)$(BIN_DIR)/rundig; \
+		chmod 755 $(INSTALL_ROOT)$(BIN_DIR)/rundig; \
+	fi
+	@echo "Installation done."
+	@echo ""
+	@echo "Before you can start searching, you will need to create a"
+	@echo "search database.  A sample script to do this has been"
+	@echo "installed as 4444444 " $(INSTALL_ROOT)$(BIN_DIR)/rundig
+
+install-strip:
+	@case "$(INSTALL_PROGRAM)" in \
+	/*)	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' install ;; \
+	*)	$(MAKE) INSTALL_PROGRAM='../$(INSTALL_PROGRAM) -s' install ;; \
+	esac
+
+#installdirs: mkinstalldirs
+#        $(srcdir)/mkinstalldirs $(bindir) $(datadir) \
+#                                $(libdir) $(infodir) \
+#                                $(mandir)
+
+depend:
+	@for i in $(HTDIRS); do \
+		(cd $$i; $(MAKE) $(MFLAGS) depend); \
+	done && test -z "$$fail"
+
+dist:
+	rm -rf $(DISTDIR)
+	mkdir $(DISTDIR)
+	tar cf - . | (cd $(DISTDIR); tar xf -)
+	(cd $(DISTDIR); $(MAKE) distclean)
+	-for i in $(DIRS); do \
+		(cd $(DISTDIR)/$$i; rm -fr RCS CVS docu .#\*); \
+	done && test -z "$$fail"
+	(cd $(DISTDIR); rm -rf $(NO_DIST))
+	(cd $(DISTDIR)/..; tar czf $(DIST).tar.gz $(DIST))
+
+tar:
+	tar czf ht.tar.gz --exclude ht.tar.gz .
+
+# automatic re-running of configure if the configure.in file has changed
+${srcdir}/configure: configure.in aclocal.m4
+	cd ${srcdir} && autoconf
+
+# autoheader might not change config.h.in, so touch a stamp file
+${srcdir}/include/htconfig.h.in: stamp-h.in
+${srcdir}/stamp-h.in: configure.in aclocal.m4
+	cd ${srcdir} && autoheader
+	echo timestamp > ${srcdir}/stamp-h.in
+
+include/htconfig.h: stamp-h
+stamp-h: config.h.in config.status
+	./config.status
+Makefile: Makefile.in config.status
+	./config.status
+Makefile.config: Makefile.config.in config.status
+	./config.status
+config.status: configure
+	./config.status --recheck

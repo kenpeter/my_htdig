@@ -1,0 +1,35 @@
+top_srcdir=		@top_srcdir@
+srcdir=			@srcdir@
+VPATH=			@srcdir@
+INSTALL=		@INSTALL@
+INSTALL_PROGRAM=	@INSTALL_PROGRAM@
+
+top_builddir= ..
+include $(top_builddir)/Makefile.config
+
+OBJS=		db.o docs.o htmerge.o words.o 
+
+TARGET=		htmerge
+LOCAL_DEFINES=	-DSORT_PROG=\"@SORT@\"
+
+all:		$(TARGET)
+
+$(TARGET):	$(OBJS) $(HTLIBS)
+	$(CXX) -o $(TARGET) $(LDFLAGS) $(OBJS) $(LIBS)
+
+install:	$(TARGET)
+	transform=@program_transform_name@
+	$(INSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)$(BIN_DIR)/`echo $(TARGET) | sed '$(transform)'`
+
+clean:
+	rm -f $(OBJS) $(TARGET) *~ *% *.bak core a.out *.orig
+
+mostlyclean:	clean
+
+distclean:	clean
+	rm -f Makefile *.proj
+
+depend:
+	$(MAKEDEPEND) $(CXXFLAGS) $(INCS) -- $(OBJS)
+
+htmerge.o:		$(top_builddir)/CONFIG

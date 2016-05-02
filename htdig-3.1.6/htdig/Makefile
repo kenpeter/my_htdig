@@ -1,0 +1,40 @@
+# Generated automatically from Makefile.in by configure.
+top_srcdir=		..
+srcdir=			.
+INSTALL=		/usr/bin/install -c
+INSTALL_PROGRAM=	${INSTALL}
+
+top_builddir= ..
+include $(top_builddir)/Makefile.config
+
+OBJS = Document.o HTML.o Images.o \
+		Parsable.o Plaintext.o \
+		Retriever.o SGMLEntities.o Server.o \
+		URLRef.o htdig.o ExternalParser.o PDF.o
+
+TARGET=		htdig
+
+all:	$(TARGET)
+
+$(TARGET):	$(OBJS) $(HTLIBS)
+	$(CXX) -o $(TARGET) $(LDFLAGS) $(OBJS) $(LIBS)
+
+install:	$(TARGET)
+	transform=s,x,x,
+	$(INSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)$(BIN_DIR)/`echo $(TARGET) | sed '$(transform)'`
+	$(INSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)$(BIN_DIR)/`echo htdump | sed '$(transform)'`
+	$(INSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)$(BIN_DIR)/`echo htload | sed '$(transform)'`
+
+clean:
+	rm -f $(TARGET) $(OBJS) *~ *.bak *% a.out *.orig core
+
+mostlyclean: clean
+
+distclean:	clean
+	rm -f Makefile *.proj
+
+depend:
+	$(MAKEDEPEND)  $(CXXFLAGS) $(INCS) -- $(OBJS)
+
+main.o:	$(top_builddir)/CONFIG
+

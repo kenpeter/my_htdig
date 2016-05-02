@@ -1,0 +1,1961 @@
+make[1]: Entering directory '/var/www/test/testme/my_htdig/htdig-3.1.6/db/dist'
+gcc -c -O -I. -I./../include  ../btree/bt_compare.c
+gcc -c -O -I. -I./../include  ../btree/bt_conv.c
+gcc -c -O -I. -I./../include  ../btree/bt_curadj.c
+gcc -c -O -I. -I./../include  ../btree/bt_cursor.c
+gcc -c -O -I. -I./../include  ../btree/bt_delete.c
+In file included from ../btree/bt_delete.c:59:0:
+../btree/bt_delete.c: In function ‘__bam_ditem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_delete.c:225:13: note: in expansion of macro ‘BINTERNAL_SIZE’
+    nbytes = BINTERNAL_SIZE(bi->len);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_delete.c:229:13: note: in expansion of macro ‘BINTERNAL_SIZE’
+    nbytes = BINTERNAL_SIZE(bi->len);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_delete.c:288:13: note: in expansion of macro ‘BKEYDATA_SIZE’
+    nbytes = BKEYDATA_SIZE(bk->len);
+             ^
+../btree/bt_delete.c: In function ‘__bam_dpages’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_delete.c:596:13: note: in expansion of macro ‘BINTERNAL_SIZE’
+    b.size = BINTERNAL_SIZE(((BINTERNAL *)b.data)->len);
+             ^
+gcc -c -O -I. -I./../include  ../btree/bt_open.c
+In file included from ../btree/bt_open.c:61:0:
+../btree/bt_open.c: In function ‘__bam_setovflsize’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../btree/bt_open.c:196:34: note: in expansion of macro ‘P_OVERHEAD’
+  t->bt_ovflsize = (dbp->pgsize - P_OVERHEAD) / (t->bt_minkey * P_INDX)
+                                  ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_open.c:197:9: note: in expansion of macro ‘BKEYDATA_PSIZE’
+      - (BKEYDATA_PSIZE(0) + ALIGN(1, 4));
+         ^
+gcc -c -O -I. -I./../include  ../btree/bt_page.c
+In file included from ../btree/bt_page.c:60:0:
+../btree/bt_page.c: In function ‘__bam_free’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../btree/bt_page.c:185:15: note: in expansion of macro ‘P_OVERHEAD’
+   ldbt.size = P_OVERHEAD;
+               ^
+gcc -c -O -I. -I./../include  ../btree/bt_put.c
+In file included from ../btree/bt_put.c:60:0:
+../btree/bt_put.c: In function ‘__bam_iitem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:120:14: note: in expansion of macro ‘BKEYDATA_SIZE’
+     nbytes = BKEYDATA_SIZE(bk->len);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:163:14: note: in expansion of macro ‘BKEYDATA_PSIZE’
+    needed += BKEYDATA_PSIZE(key->size);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:167:14: note: in expansion of macro ‘BKEYDATA_PSIZE’
+    needed += BKEYDATA_PSIZE(data_size);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:177:18: note: in expansion of macro ‘BKEYDATA_PSIZE’
+     have_bytes = BKEYDATA_PSIZE(bk->len);
+                  ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:188:18: note: in expansion of macro ‘BKEYDATA_PSIZE’
+    need_bytes += BKEYDATA_PSIZE(data_size);
+                  ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_put.c:202:6: note: in expansion of macro ‘P_FREESPACE’
+  if (P_FREESPACE(h) < needed ||
+      ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:242:8: note: in expansion of macro ‘BKEYDATA_SIZE’
+        BKEYDATA_SIZE(key->size), NULL, key)) != 0)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_put.c:319:17: note: in expansion of macro ‘SSZA’
+    __hdr.size = SSZA(BKEYDATA, data);
+                 ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:321:8: note: in expansion of macro ‘BKEYDATA_SIZE’
+        BKEYDATA_SIZE(data->size), &__hdr, data);
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:326:8: note: in expansion of macro ‘BKEYDATA_SIZE’
+        BKEYDATA_SIZE(data->size), NULL, data);
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_put.c:339:19: note: in expansion of macro ‘P_FREESPACE’
+  if (dupadjust && P_FREESPACE(h) <= dbp->pgsize / 2) {
+                   ^
+../btree/bt_put.c: In function ‘__bam_ritem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:529:7: note: in expansion of macro ‘BKEYDATA_SIZE’
+  lo = BKEYDATA_SIZE(bk->len);
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:530:7: note: in expansion of macro ‘BKEYDATA_SIZE’
+  ln = BKEYDATA_SIZE(data->size);
+       ^
+../btree/bt_put.c: In function ‘__bam_ndup’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:587:7: note: in expansion of macro ‘BKEYDATA_PSIZE’
+       BKEYDATA_PSIZE(bk->len) : BOVERFLOW_PSIZE;
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_put.c:590:7: note: in expansion of macro ‘BKEYDATA_PSIZE’
+       BKEYDATA_PSIZE(bk->len) : BOVERFLOW_PSIZE;
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_put.c:616:7: note: in expansion of macro ‘BKEYDATA_SIZE’
+       BKEYDATA_SIZE(bk->len) : BOVERFLOW_SIZE;
+       ^
+gcc -c -O -I. -I./../include  ../btree/bt_rec.c
+gcc -c -O -I. -I./../include  ../btree/bt_recno.c
+In file included from ../btree/bt_recno.c:22:0:
+../btree/bt_recno.c: In function ‘__ram_i_delete’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_recno.c:328:14: note: in expansion of macro ‘SSZA’
+   hdr.size = SSZA(BKEYDATA, data);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_recno.c:333:16: note: in expansion of macro ‘BKEYDATA_SIZE’
+       h, indx, BKEYDATA_SIZE(0), &hdr, &data)) != 0)
+                ^
+gcc -c -O -I. -I./../include  ../btree/bt_rsearch.c
+gcc -c -O -I. -I./../include  ../btree/bt_search.c
+gcc -c -O -I. -I./../include  ../btree/bt_split.c
+In file included from ../btree/bt_split.c:58:0:
+../btree/bt_split.c: In function ‘__bam_page’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+../btree/bt_split.c:334:23: note: in expansion of macro ‘LOFFSET’
+  memcpy(cp->page, lp, LOFFSET(lp));
+                       ^
+../btree/bt_split.c: In function ‘__bam_broot’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:424:13: note: in expansion of macro ‘SSZA’
+  hdr.size = SSZA(BINTERNAL, data);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:426:32: note: in expansion of macro ‘BINTERNAL_SIZE’
+      __db_pitem(dbc, rootp, 0, BINTERNAL_SIZE(0), &hdr, NULL)) != 0)
+                                ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:442:14: note: in expansion of macro ‘SSZA’
+   hdr.size = SSZA(BINTERNAL, data);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:446:7: note: in expansion of macro ‘BINTERNAL_SIZE’
+       BINTERNAL_SIZE(child_bi->len), &hdr, &data)) != 0)
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:468:15: note: in expansion of macro ‘SSZA’
+    hdr.size = SSZA(BINTERNAL, data);
+               ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:472:8: note: in expansion of macro ‘BINTERNAL_SIZE’
+        BINTERNAL_SIZE(child_bk->len), &hdr, &data)) != 0)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:485:15: note: in expansion of macro ‘SSZA’
+    hdr.size = SSZA(BINTERNAL, data);
+               ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:489:8: note: in expansion of macro ‘BINTERNAL_SIZE’
+        BINTERNAL_SIZE(BOVERFLOW_SIZE), &hdr, &data)) != 0)
+        ^
+../btree/bt_split.c: In function ‘__bam_pinsert’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+./../include/db_page.h:483:3: note: in expansion of macro ‘BINTERNAL_SIZE’
+  (BINTERNAL_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_split.c:607:12: note: in expansion of macro ‘BINTERNAL_PSIZE’
+   nbytes = BINTERNAL_PSIZE(child_bi->len);
+            ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_split.c:609:7: note: in expansion of macro ‘P_FREESPACE’
+   if (P_FREESPACE(ppage) < nbytes)
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:620:14: note: in expansion of macro ‘SSZA’
+   hdr.size = SSZA(BINTERNAL, data);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:625:7: note: in expansion of macro ‘BINTERNAL_SIZE’
+       BINTERNAL_SIZE(child_bi->len), &hdr, &data)) != 0)
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+./../include/db_page.h:483:3: note: in expansion of macro ‘BINTERNAL_SIZE’
+  (BINTERNAL_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_split.c:638:13: note: in expansion of macro ‘BINTERNAL_PSIZE’
+    nbytes = BINTERNAL_PSIZE(child_bk->len);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+./../include/db_page.h:483:3: note: in expansion of macro ‘BINTERNAL_SIZE’
+  (BINTERNAL_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_split.c:654:13: note: in expansion of macro ‘BINTERNAL_PSIZE’
+    if ((n = BINTERNAL_PSIZE(nksize)) < nbytes)
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_split.c:659:8: note: in expansion of macro ‘P_FREESPACE’
+    if (P_FREESPACE(ppage) < nbytes)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:669:15: note: in expansion of macro ‘SSZA’
+    hdr.size = SSZA(BINTERNAL, data);
+               ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:674:8: note: in expansion of macro ‘BINTERNAL_SIZE’
+        BINTERNAL_SIZE(nksize), &hdr, &data)) != 0)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+./../include/db_page.h:483:3: note: in expansion of macro ‘BINTERNAL_SIZE’
+  (BINTERNAL_SIZE(len) + sizeof(db_indx_t))
+   ^
+../btree/bt_split.c:679:13: note: in expansion of macro ‘BINTERNAL_PSIZE’
+    nbytes = BINTERNAL_PSIZE(BOVERFLOW_SIZE);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_split.c:681:8: note: in expansion of macro ‘P_FREESPACE’
+    if (P_FREESPACE(ppage) < nbytes)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../btree/bt_split.c:691:15: note: in expansion of macro ‘SSZA’
+    hdr.size = SSZA(BINTERNAL, data);
+               ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:696:8: note: in expansion of macro ‘BINTERNAL_SIZE’
+        BINTERNAL_SIZE(BOVERFLOW_SIZE), &hdr, &data)) != 0)
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../btree/bt_split.c:713:7: note: in expansion of macro ‘P_FREESPACE’
+   if (P_FREESPACE(ppage) < nbytes)
+       ^
+../btree/bt_split.c: In function ‘__bam_psplit’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:816:8: note: in expansion of macro ‘BINTERNAL_SIZE’
+        BINTERNAL_SIZE(GET_BINTERNAL(pp, off)->len);
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:818:15: note: in expansion of macro ‘BINTERNAL_SIZE’
+     nbytes += BINTERNAL_SIZE(BOVERFLOW_SIZE);
+               ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_split.c:823:9: note: in expansion of macro ‘BKEYDATA_SIZE’
+         BKEYDATA_SIZE(GET_BKEYDATA(pp, off)->len);
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_split.c:830:9: note: in expansion of macro ‘BKEYDATA_SIZE’
+         BKEYDATA_SIZE(GET_BKEYDATA(pp, off)->len);
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_split.c:838:14: note: in expansion of macro ‘BKEYDATA_SIZE’
+    nbytes += BKEYDATA_SIZE(GET_BKEYDATA(pp, off)->len);
+              ^
+../btree/bt_split.c: In function ‘__bam_copy’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:934:9: note: in expansion of macro ‘BINTERNAL_SIZE’
+         BINTERNAL_SIZE(GET_BINTERNAL(pp, nxt)->len);
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:481:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BINTERNAL, data), 4)
+                ^
+../btree/bt_split.c:936:14: note: in expansion of macro ‘BINTERNAL_SIZE’
+     nbytes = BINTERNAL_SIZE(BOVERFLOW_SIZE);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../btree/bt_split.c:952:9: note: in expansion of macro ‘BKEYDATA_SIZE’
+         BKEYDATA_SIZE(GET_BKEYDATA(pp, nxt)->len);
+         ^
+gcc -c -O -I. -I./../include  ../btree/bt_stat.c
+In file included from ../btree/bt_stat.c:21:0:
+../btree/bt_stat.c: In function ‘__bam_stat’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+../btree/bt_stat.c:153:38: note: in expansion of macro ‘LOFFSET’
+    sp->bt_int_pgfree += HOFFSET(h) - LOFFSET(h);
+                                      ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+../btree/bt_stat.c:157:39: note: in expansion of macro ‘LOFFSET’
+    sp->bt_leaf_pgfree += HOFFSET(h) - LOFFSET(h);
+                                       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+../btree/bt_stat.c:162:39: note: in expansion of macro ‘LOFFSET’
+    sp->bt_leaf_pgfree += HOFFSET(h) - LOFFSET(h);
+                                       ^
+gcc -c -O -I. -I./../include  ../btree/btree_auto.c
+gcc -c -O -I. -I./../include  ../db/db.c
+gcc -c -O -I. -I./../include  ../common/db_appinit.c
+gcc -c -O -I. -I./../include  ../db/db_am.c
+gcc -c -O -I. -I./../include  ../common/db_apprec.c
+gcc -c -O -I. -I./../include  ../db/db_auto.c
+gcc -c -O -I. -I./../include  ../common/db_byteorder.c
+gcc -c -O -I. -I./../include  ../db/db_conv.c
+In file included from ../db/db_conv.c:57:0:
+../db/db_conv.c: In function ‘__db_convert’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../db/db_conv.c:134:11: note: in expansion of macro ‘LEN_HKEYDATA’
+     len = LEN_HKEYDATA(h, pagesize, i);
+           ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../db/db_conv.c:135:9: note: in expansion of macro ‘HKEYDATA_DATA’
+     p = HKEYDATA_DATA(P_ENTRY(h, i));
+         ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../db/db_conv.c:152:9: note: in expansion of macro ‘HOFFPAGE_PGNO’
+     p = HOFFPAGE_PGNO(P_ENTRY(h, i));
+         ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../db/db_conv.c:156:9: note: in expansion of macro ‘HOFFPAGE_PGNO’
+     p = HOFFPAGE_PGNO(P_ENTRY(h, i));
+         ^
+gcc -c -O -I. -I./../include  ../db/db_dispatch.c
+gcc -c -O -I. -I./../include  ../db/db_dup.c
+In file included from ../db/db_dup.c:21:0:
+../db/db_dup.c: In function ‘__db_dput’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+./../include/db_page.h:420:3: note: in expansion of macro ‘BKEYDATA_SIZE’
+  (BKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../db/db_dup.c:71:10: note: in expansion of macro ‘BKEYDATA_PSIZE’
+   size = BKEYDATA_PSIZE(dbt->size);
+          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../db/db_dup.c:72:11: note: in expansion of macro ‘BKEYDATA_SIZE’
+   isize = BKEYDATA_SIZE(dbt->size);
+           ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../db/db_dup.c:78:13: note: in expansion of macro ‘P_FREESPACE’
+  if (size > P_FREESPACE(pagep)) {
+             ^
+../db/db_dup.c: In function ‘__db_drem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../db/db_dup.c:131:7: note: in expansion of macro ‘BKEYDATA_SIZE’
+       BKEYDATA_SIZE(GET_BKEYDATA(pagep, indx)->len));
+       ^
+../db/db_dup.c: In function ‘__db_dsplit’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../db/db_dup.c:265:11: note: in expansion of macro ‘BKEYDATA_SIZE’
+    sum += BKEYDATA_SIZE(GET_BKEYDATA(h, i)->len);
+           ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../db/db_dup.c:309:8: note: in expansion of macro ‘BKEYDATA_SIZE’
+    s = BKEYDATA_SIZE(bk->len);
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../db/db_dup.c:325:8: note: in expansion of macro ‘BKEYDATA_SIZE’
+    s = BKEYDATA_SIZE(bk->len);
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+../db/db_dup.c:340:16: note: in expansion of macro ‘LOFFSET’
+  memcpy(h, tp, LOFFSET(tp));
+                ^
+../db/db_dup.c: In function ‘__db_pitem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../db/db_dup.c:501:15: note: in expansion of macro ‘SSZA’
+   thdr.size = SSZA(BKEYDATA, data);
+               ^
+gcc -c -O -I. -I./../include  ../common/db_err.c
+gcc -c -O -I. -I./../include  ../db/db_iface.c
+gcc -c -O -I. -I./../include  ../db/db_join.c
+gcc -c -O -I. -I./../include  ../common/db_log2.c
+gcc -c -O -I. -I./../include  ../db/db_overflow.c
+In file included from ../db/db_overflow.c:60:0:
+../db/db_overflow.c: In function ‘__db_goff’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_overflow.c:140:26: note: in expansion of macro ‘P_OVERHEAD’
+    src = (u_int8_t *)h + P_OVERHEAD;
+                          ^
+../db/db_overflow.c: In function ‘__db_poff’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:247:38: note: in expansion of macro ‘P_OVERHEAD’
+ #define P_MAXSPACE(psize) ((psize) - P_OVERHEAD)
+                                      ^
+../db/db_overflow.c:188:14: note: in expansion of macro ‘P_MAXSPACE’
+  pagespace = P_MAXSPACE(dbp->pgsize);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_overflow.c:229:30: note: in expansion of macro ‘P_OVERHEAD’
+   memcpy((u_int8_t *)pagep + P_OVERHEAD, p, pagespace);
+                              ^
+../db/db_overflow.c: In function ‘__db_doff’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_overflow.c:317:39: note: in expansion of macro ‘P_OVERHEAD’
+    tmp_dbt.data = (u_int8_t *)pagep + P_OVERHEAD;
+                                       ^
+../db/db_overflow.c: In function ‘__db_moff’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_overflow.c:388:27: note: in expansion of macro ‘P_OVERHEAD’
+       (u_int8_t *)pagep + P_OVERHEAD; cmp_bytes-- > 0; ++p1, ++p2)
+                           ^
+gcc -c -O -I. -I./../include  ../db/db_pr.c
+In file included from ../db/db_pr.c:24:0:
+../db/db_pr.c: In function ‘__db_prpage’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_pr.c:438:27: note: in expansion of macro ‘P_OVERHEAD’
+   __db_pr((u_int8_t *)h + P_OVERHEAD, OV_LEN(h));
+                           ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_pr.c:449:39: note: in expansion of macro ‘P_OVERHEAD’
+   if (P_ENTRY(h, i) - (u_int8_t *)h < P_OVERHEAD ||
+                                       ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:364:45: note: in expansion of macro ‘SSZ’
+ #define HOFFDUP_PGNO(p)  (((u_int8_t *)p) + SSZ(HOFFDUP, pgno))
+                                             ^
+../db/db_pr.c:488:9: note: in expansion of macro ‘HOFFDUP_PGNO’
+         HOFFDUP_PGNO(hk), sizeof(db_pgno_t));
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../db/db_pr.c:500:12: note: in expansion of macro ‘LEN_HKEYDATA’
+      len = LEN_HKEYDATA(h, 0, i);
+            ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../db/db_pr.c:505:14: note: in expansion of macro ‘HKEYDATA_DATA’
+     for (p = HKEYDATA_DATA(hk),
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../db/db_pr.c:516:14: note: in expansion of macro ‘HKEYDATA_DATA’
+      __db_pr(HKEYDATA_DATA(hk),
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../db/db_pr.c:517:10: note: in expansion of macro ‘LEN_HKEYDATA’
+          LEN_HKEYDATA(h, 0, i));
+          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../db/db_pr.c:519:26: note: in expansion of macro ‘HKEYDATA_DATA’
+      fprintf(fp, "%s\n", HKEYDATA_DATA(hk));
+                          ^
+../db/db_pr.c: In function ‘__db_isbad’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_pr.c:615:39: note: in expansion of macro ‘P_OVERHEAD’
+   if (P_ENTRY(h, i) - (u_int8_t *)h < P_OVERHEAD ||
+                                       ^
+gcc -c -O -I. -I./../include  ../db/db_rec.c
+In file included from ../db/db_rec.c:20:0:
+../db/db_rec.c: In function ‘__db_big_recover’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+../db/db_rec.c:234:30: note: in expansion of macro ‘P_OVERHEAD’
+   memcpy((u_int8_t *)pagep + P_OVERHEAD, argp->dbt.data,
+                              ^
+gcc -c -O -I. -I./../include  ../common/db_region.c
+gcc -c -O -I. -I./../include  ../db/db_ret.c
+In file included from ../db/db_ret.c:21:0:
+../db/db_ret.c: In function ‘__db_ret’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../db/db_ret.c:57:9: note: in expansion of macro ‘LEN_HKEYDATA’
+   len = LEN_HKEYDATA(h, dbp->pgsize, indx);
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../db/db_ret.c:58:10: note: in expansion of macro ‘HKEYDATA_DATA’
+   data = HKEYDATA_DATA(hk);
+          ^
+gcc -c -O -I. -I./../include  ../common/db_salloc.c
+gcc -c -O -I. -I./../include  ../common/db_shash.c
+gcc -c -O -I. -I./../include  ../dbm/dbm.c
+gcc -c -O -I. -I./../include  ../hash/hash.c
+In file included from ../hash/hash.c:61:0:
+../hash/hash.c: In function ‘__ham_c_del’:
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:364:45: note: in expansion of macro ‘SSZ’
+ #define HOFFDUP_PGNO(p)  (((u_int8_t *)p) + SSZ(HOFFDUP, pgno))
+                                             ^
+../hash/hash.c:455:12: note: in expansion of macro ‘HOFFDUP_PGNO’
+     memcpy(HOFFDUP_PGNO(P_ENTRY(hcp->pagep,
+            ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash.c:474:7: note: in expansion of macro ‘LEN_HDATA’
+       LEN_HDATA(hcp->pagep, hcp->hdr->pagesize, hcp->bndx))
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash.c:483:8: note: in expansion of macro ‘HKEYDATA_DATA’
+        HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx));
+        ^
+../hash/hash.c: In function ‘__ham_c_put’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:312:3: note: in expansion of macro ‘HKEYDATA_SIZE’
+  (HKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../hash/hash.c:716:7: note: in expansion of macro ‘HKEYDATA_PSIZE’
+       HKEYDATA_PSIZE(key->size)) +
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:312:3: note: in expansion of macro ‘HKEYDATA_SIZE’
+  (HKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../hash/hash.c:718:7: note: in expansion of macro ‘HKEYDATA_PSIZE’
+       HKEYDATA_PSIZE(data->size));
+       ^
+../hash/hash.c: In function ‘__ham_dup_return’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash.c:937:20: note: in expansion of macro ‘LEN_HDATA’
+    hcp->dup_tlen = LEN_HDATA(hcp->pagep,
+                    ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash.c:945:10: note: in expansion of macro ‘HKEYDATA_DATA’
+          HKEYDATA_DATA(hk) + hcp->dup_off,
+          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash.c:954:9: note: in expansion of macro ‘HKEYDATA_DATA’
+         HKEYDATA_DATA(hk), sizeof(db_indx_t));
+         ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:364:45: note: in expansion of macro ‘SSZ’
+ #define HOFFDUP_PGNO(p)  (((u_int8_t *)p) + SSZ(HOFFDUP, pgno))
+                                             ^
+../hash/hash.c:961:18: note: in expansion of macro ‘HOFFDUP_PGNO’
+    memcpy(&pgno, HOFFDUP_PGNO(P_ENTRY(hcp->pagep, ndx)),
+                  ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:347:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_TLEN(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, tlen))
+                                             ^
+../hash/hash.c:996:9: note: in expansion of macro ‘HOFFPAGE_TLEN’
+         HOFFPAGE_TLEN(hk), sizeof(u_int32_t));
+         ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../hash/hash.c:998:9: note: in expansion of macro ‘HOFFPAGE_PGNO’
+         HOFFPAGE_PGNO(hk), sizeof(db_pgno_t));
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash.c:1007:20: note: in expansion of macro ‘HKEYDATA_DATA’
+     tmp_val.data = HKEYDATA_DATA(hk);
+                    ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash.c:1008:20: note: in expansion of macro ‘LEN_HDATA’
+     tmp_val.size = LEN_HDATA(hcp->pagep,
+                    ^
+../hash/hash.c: In function ‘__ham_overwrite’:
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:347:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_TLEN(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, tlen))
+                                             ^
+../hash/hash.c:1080:8: note: in expansion of macro ‘HOFFPAGE_TLEN’
+        HOFFPAGE_TLEN(hk), sizeof(u_int32_t));
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash.c:1082:19: note: in expansion of macro ‘LEN_HDATA’
+    tmp_val.dlen = LEN_HDATA(hcp->pagep,
+                   ^
+../hash/hash.c: In function ‘__ham_lookup’:
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:347:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_TLEN(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, tlen))
+                                             ^
+../hash/hash.c:1135:18: note: in expansion of macro ‘HOFFPAGE_TLEN’
+    memcpy(&tlen, HOFFPAGE_TLEN(hk), sizeof(u_int32_t));
+                  ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../hash/hash.c:1138:9: note: in expansion of macro ‘HOFFPAGE_PGNO’
+         HOFFPAGE_PGNO(hk), sizeof(db_pgno_t));
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:334:35: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HKEY(p, psize, pindx) LEN_HKEYDATA(p, psize, H_KEYINDEX(pindx))
+                                   ^
+../hash/hash.c:1149:21: note: in expansion of macro ‘LEN_HKEY’
+    if (key->size == LEN_HKEY(hcp->pagep,
+                     ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash.c:1152:8: note: in expansion of macro ‘HKEYDATA_DATA’
+        HKEYDATA_DATA(hk), key->size) == 0) {
+        ^
+gcc -c -O -I. -I./../include  ../hash/hash_auto.c
+gcc -c -O -I. -I./../include  ../hash/hash_conv.c
+gcc -c -O -I. -I./../include  ../hash/hash_dup.c
+In file included from ../hash/hash_dup.c:68:0:
+../hash/hash_dup.c: In function ‘__ham_add_dup’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../hash/hash_dup.c:124:46: note: in expansion of macro ‘LEN_HKEYDATA’
+  new_size = DUP_SIZE(nval->size) - del_len + LEN_HKEYDATA(hcp->pagep,
+                                              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_dup.c:134:39: note: in expansion of macro ‘P_FREESPACE’
+      DUP_SIZE(nval->size) - del_len > P_FREESPACE(hcp->pagep))) {
+                                       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:147:16: note: in expansion of macro ‘HKEYDATA_DATA’
+    pval.data = HKEYDATA_DATA(hk);
+                ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:148:16: note: in expansion of macro ‘LEN_HDATA’
+    pval.size = LEN_HDATA(hcp->pagep, dbp->pgsize,
+                ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:171:20: note: in expansion of macro ‘LEN_HDATA’
+     tmp_val.doff = LEN_HDATA(hcp->pagep,
+                    ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:180:16: note: in expansion of macro ‘HKEYDATA_DATA’
+     dbt.data = HKEYDATA_DATA(H_PAIRDATA(hcp->pagep,
+                ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:364:45: note: in expansion of macro ‘SSZ’
+ #define HOFFDUP_PGNO(p)  (((u_int8_t *)p) + SSZ(HOFFDUP, pgno))
+                                             ^
+../hash/hash_dup.c:206:23: note: in expansion of macro ‘HOFFDUP_PGNO’
+   memcpy(&hcp->dpgno, HOFFDUP_PGNO(hk), sizeof(db_pgno_t));
+                       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../hash/hash_dup.c:245:14: note: in expansion of macro ‘BKEYDATA_SIZE’
+    del_len = BKEYDATA_SIZE(GET_BKEYDATA(hcp->dpagep,
+              ^
+../hash/hash_dup.c: In function ‘__ham_dup_convert’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:306:7: note: in expansion of macro ‘LEN_HDATA’
+       LEN_HDATA(hcp->pagep, hcp->hdr->pagesize, hcp->bndx);
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:307:14: note: in expansion of macro ‘HKEYDATA_DATA’
+   dbt.data = HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx));
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./db_int.h:53:32: note: in definition of macro ‘ALIGN’
+ #define ALIGN(value, bound) (((value) + (bound) - 1) & ~((bound) - 1))
+                                ^
+./../include/db_page.h:418:16: note: in expansion of macro ‘SSZA’
+  ALIGN((len) + SSZA(BKEYDATA, data), 4)
+                ^
+../hash/hash_dup.c:309:24: note: in expansion of macro ‘BKEYDATA_SIZE’
+       (u_int32_t)dndx, BKEYDATA_SIZE(dbt.size), NULL, &dbt);
+                        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:331:7: note: in expansion of macro ‘HKEYDATA_DATA’
+   p = HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx));
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:333:7: note: in expansion of macro ‘LEN_HDATA’
+       LEN_HDATA(hcp->pagep, hcp->hdr->pagesize, hcp->bndx);
+       ^
+../hash/hash_dup.c: In function ‘__ham_check_move’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+../hash/hash_dup.c:444:26: note: in expansion of macro ‘HKEYDATA_SIZE’
+  new_datalen = old_len - HKEYDATA_SIZE(0) + add_len;
+                          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_dup.c:455:32: note: in expansion of macro ‘P_FREESPACE’
+      HOFFDUP_SIZE - old_len <= P_FREESPACE(hcp->pagep)))
+                                ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_dup.c:459:26: note: in expansion of macro ‘P_FREESPACE’
+      add_len <= (int32_t)P_FREESPACE(hcp->pagep))
+                          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+../hash/hash_dup.c:468:21: note: in expansion of macro ‘HKEYDATA_SIZE’
+      HOFFDUP_SIZE : HKEYDATA_SIZE(new_datalen);
+                     ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_dup.c:481:7: note: in expansion of macro ‘P_FREESPACE’
+   if (P_FREESPACE(next_pagep) >= new_datalen)
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_dup.c:491:6: note: in expansion of macro ‘P_FREESPACE’
+  if (P_FREESPACE(next_pagep) < new_datalen && (ret =
+      ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:507:8: note: in expansion of macro ‘HKEYDATA_DATA’
+        HKEYDATA_DATA(H_PAIRKEY(hcp->pagep, hcp->bndx));
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:334:35: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HKEY(p, psize, pindx) LEN_HKEYDATA(p, psize, H_KEYINDEX(pindx))
+                                   ^
+../hash/hash_dup.c:508:13: note: in expansion of macro ‘LEN_HKEY’
+    k.size = LEN_HKEY(hcp->pagep,
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:518:8: note: in expansion of macro ‘HKEYDATA_DATA’
+        HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx));
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:519:13: note: in expansion of macro ‘LEN_HDATA’
+    d.size = LEN_HDATA(hcp->pagep,
+             ^
+../hash/hash_dup.c: In function ‘__ham_dsearch’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_dup.c:643:9: note: in expansion of macro ‘HKEYDATA_DATA’
+  data = HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx)) + i;
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+./../include/db_page.h:333:36: note: in expansion of macro ‘LEN_HKEYDATA’
+ #define LEN_HDATA(p, psize, pindx) LEN_HKEYDATA(p, psize, H_DATAINDEX(pindx))
+                                    ^
+../hash/hash_dup.c:644:13: note: in expansion of macro ‘LEN_HDATA’
+  while (i < LEN_HDATA(hcp->pagep, hcp->hdr->pagesize, hcp->bndx)) {
+             ^
+gcc -c -O -I. -I./../include  ../hash/hash_func.c
+gcc -c -O -I. -I./../include  ../hash/hash_page.c
+In file included from ../hash/hash_page.c:76:0:
+../hash/hash_page.c: In function ‘__ham_item’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_page.c:112:26: note: in expansion of macro ‘P_FREESPACE’
+      && hcp->seek_size < P_FREESPACE(hcp->pagep))
+                          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:123:7: note: in expansion of macro ‘HKEYDATA_DATA’
+       HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx)) +
+       ^
+../hash/hash_page.c: In function ‘__ham_item_prev’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:352:26: note: in expansion of macro ‘HKEYDATA_DATA’
+      memcpy(&h->dup_len, HKEYDATA_DATA(
+                          ^
+../hash/hash_page.c: In function ‘__ham_putitem’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+../hash/hash_page.c:538:22: note: in expansion of macro ‘HKEYDATA_SIZE’
+   off = HOFFSET(p) - HKEYDATA_SIZE(dbt->size);
+                      ^
+../hash/hash_page.c: In function ‘__ham_del_pair’:
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../hash/hash_page.c:634:17: note: in expansion of macro ‘HOFFPAGE_PGNO’
+   memcpy(&pgno, HOFFPAGE_PGNO(P_ENTRY(p, H_KEYINDEX(ndx))),
+                 ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:346:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_PGNO(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, pgno))
+                                             ^
+../hash/hash_page.c:643:8: note: in expansion of macro ‘HOFFPAGE_PGNO’
+        HOFFPAGE_PGNO(P_ENTRY(p, H_DATAINDEX(ndx))),
+        ^
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:364:45: note: in expansion of macro ‘SSZ’
+ #define HOFFDUP_PGNO(p)  (((u_int8_t *)p) + SSZ(HOFFDUP, pgno))
+                                             ^
+../hash/hash_page.c:649:8: note: in expansion of macro ‘HOFFDUP_PGNO’
+        HOFFDUP_PGNO(P_ENTRY(p, H_DATAINDEX(ndx))),
+        ^
+../hash/hash_page.c: In function ‘__ham_replpair’:
+./db_int.h:69:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZ(name, field) ((int)&(((name *)0)->field))
+                           ^
+./../include/db_page.h:347:45: note: in expansion of macro ‘SSZ’
+ #define HOFFPAGE_TLEN(p) (((u_int8_t *)p) + SSZ(HOFFPAGE, tlen))
+                                             ^
+../hash/hash_page.c:894:16: note: in expansion of macro ‘HOFFPAGE_TLEN’
+   memcpy(&len, HOFFPAGE_TLEN(hk), sizeof(u_int32_t));
+                ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../hash/hash_page.c:896:9: note: in expansion of macro ‘LEN_HKEYDATA’
+   len = LEN_HKEYDATA(hcp->pagep,
+         ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_page.c:903:24: note: in expansion of macro ‘P_FREESPACE’
+  if (change > (int32_t)P_FREESPACE(hcp->pagep) || is_big) {
+                        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:975:8: note: in expansion of macro ‘HKEYDATA_DATA’
+  beg = HKEYDATA_DATA(H_PAIRDATA(hcp->pagep, hcp->bndx));
+        ^
+../hash/hash_page.c: In function ‘__ham_onpage_replace’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../hash/hash_page.c:1034:30: note: in expansion of macro ‘LEN_HKEYDATA’
+   else if ((u_int32_t)off >= LEN_HKEYDATA(pagep, pgsize, ndx)) {
+                              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:1035:10: note: in expansion of macro ‘HKEYDATA_DATA’
+    len = HKEYDATA_DATA(P_ENTRY(pagep, ndx)) +
+          ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:303:18: note: in expansion of macro ‘HKEYDATA_SIZE’
+  pg->inp[indx] - HKEYDATA_SIZE(0))
+                  ^
+../hash/hash_page.c:1036:8: note: in expansion of macro ‘LEN_HKEYDATA’
+        LEN_HKEYDATA(pagep, pgsize, ndx) - src;
+        ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:1039:11: note: in expansion of macro ‘HKEYDATA_DATA’
+    len = (HKEYDATA_DATA(P_ENTRY(pagep, ndx)) + off) - src;
+           ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:292:45: note: in expansion of macro ‘SSZA’
+ #define HKEYDATA_DATA(p) (((u_int8_t *)p) + SSZA(HKEYDATA, data))
+                                             ^
+../hash/hash_page.c:1051:10: note: in expansion of macro ‘HKEYDATA_DATA’
+   memcpy(HKEYDATA_DATA(P_ENTRY(pagep, ndx)) + off,
+          ^
+../hash/hash_page.c: In function ‘__ham_split_page’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_page.c:1134:8: note: in expansion of macro ‘P_FREESPACE’
+    if (P_FREESPACE(*pp) < len) {
+        ^
+../hash/hash_page.c: In function ‘__ham_add_el’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:312:3: note: in expansion of macro ‘HKEYDATA_SIZE’
+  (HKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../hash/hash_page.c:1262:13: note: in expansion of macro ‘HKEYDATA_PSIZE’
+  key_size = HKEYDATA_PSIZE(key->size);
+             ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:310:11: note: in expansion of macro ‘SSZA’
+  ((len) + SSZA(HKEYDATA, data))
+           ^
+./../include/db_page.h:312:3: note: in expansion of macro ‘HKEYDATA_SIZE’
+  (HKEYDATA_SIZE(len) + sizeof(db_indx_t))
+   ^
+../hash/hash_page.c:1263:14: note: in expansion of macro ‘HKEYDATA_PSIZE’
+  data_size = HKEYDATA_PSIZE(val->size);
+              ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_page.c:1281:7: note: in expansion of macro ‘P_FREESPACE’
+   if (P_FREESPACE(hcp->pagep) >= pairsize)
+       ^
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+./../include/db_page.h:213:22: note: in expansion of macro ‘SSZA’
+ #define P_OVERHEAD  (SSZA(PAGE, inp))
+                      ^
+./../include/db_page.h:216:23: note: in expansion of macro ‘P_OVERHEAD’
+ #define LOFFSET(pg)  (P_OVERHEAD + NUM_ENT(pg) * sizeof(db_indx_t))
+                       ^
+./../include/db_page.h:219:41: note: in expansion of macro ‘LOFFSET’
+ #define P_FREESPACE(pg)  (HOFFSET(pg) - LOFFSET(pg))
+                                         ^
+../hash/hash_page.c:1292:6: note: in expansion of macro ‘P_FREESPACE’
+  if (P_FREESPACE(hcp->pagep) < pairsize) {
+      ^
+gcc -c -O -I. -I./../include  ../hash/hash_rec.c
+gcc -c -O -I. -I./../include  ../hash/hash_stat.c
+gcc -c -O -I. -I./../include  ../hsearch/hsearch.c
+gcc -c -O -I. -I./../include  ../lock/lock.c
+gcc -c -O -I. -I./../include  ../lock/lock_conflict.c
+gcc -c -O -I. -I./../include  ../lock/lock_deadlock.c
+gcc -c -O -I. -I./../include  ../lock/lock_util.c
+gcc -c -O -I. -I./../include  ../lock/lock_region.c
+gcc -c -O -I. -I./../include  ../log/log.c
+gcc -c -O -I. -I./../include  ../log/log_archive.c
+gcc -c -O -I. -I./../include  ../log/log_auto.c
+gcc -c -O -I. -I./../include  ../log/log_compare.c
+gcc -c -O -I. -I./../include  ../log/log_findckp.c
+gcc -c -O -I. -I./../include  ../log/log_get.c
+gcc -c -O -I. -I./../include  ../log/log_put.c
+gcc -c -O -I. -I./../include  ../log/log_rec.c
+gcc -c -O -I. -I./../include  ../log/log_register.c
+gcc -c -O -I. -I./../include  ../mp/mp_bh.c
+gcc -c -O -I. -I./../include  ../mp/mp_fget.c
+gcc -c -O -I. -I./../include  ../mp/mp_fopen.c
+gcc -c -O -I. -I./../include  ../mp/mp_fput.c
+In file included from ../mp/mp_fput.c:19:0:
+../mp/mp_fput.c: In function ‘memp_fput’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../mp/mp_fput.c:85:36: note: in expansion of macro ‘SSZA’
+  bhp = (BH *)((u_int8_t *)pgaddr - SSZA(BH, buf));
+                                    ^
+gcc -c -O -I. -I./../include  ../mp/mp_fset.c
+In file included from ../mp/mp_fset.c:19:0:
+../mp/mp_fset.c: In function ‘memp_fset’:
+./db_int.h:72:28: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+ #define SSZA(name, field) ((int)&(((name *)0)->field[0]))
+                            ^
+../mp/mp_fset.c:64:36: note: in expansion of macro ‘SSZA’
+  bhp = (BH *)((u_int8_t *)pgaddr - SSZA(BH, buf));
+                                    ^
+gcc -c -O -I. -I./../include  ../mp/mp_open.c
+gcc -c -O -I. -I./../include  ../mp/mp_pr.c
+gcc -c -O -I. -I./../include  ../mp/mp_region.c
+gcc -c -O -I. -I./../include  ../mp/mp_sync.c
+gcc -c -O -I. -I./../include  ../mutex/mutex.c
+gcc -c -O -I. -I./../include  ../os/os_abs.c
+gcc -c -O -I. -I./../include  ../os/os_alloc.c
+gcc -c -O -I. -I./../include  ../os/os_config.c
+gcc -c -O -I. -I./../include  ../os/os_dir.c
+gcc -c -O -I. -I./../include  ../os/os_fid.c
+gcc -c -O -I. -I./../include  ../os/os_fsync.c
+gcc -c -O -I. -I./../include  ../os/os_map.c
+gcc -c -O -I. -I./../include  ../os/os_oflags.c
+gcc -c -O -I. -I./../include  ../os/os_open.c
+gcc -c -O -I. -I./../include  ../os/os_rpath.c
+gcc -c -O -I. -I./../include  ../os/os_rw.c
+gcc -c -O -I. -I./../include  ../os/os_seek.c
+gcc -c -O -I. -I./../include  ../os/os_sleep.c
+gcc -c -O -I. -I./../include  ../os/os_spin.c
+gcc -c -O -I. -I./../include  ../os/os_stat.c
+gcc -c -O -I. -I./../include  ../os/os_tmpdir.c
+gcc -c -O -I. -I./../include  ../os/os_unlink.c
+gcc -c -O -I. -I./../include  ../txn/txn.c
+gcc -c -O -I. -I./../include  ../txn/txn_auto.c
+gcc -c -O -I. -I./../include  ../txn/txn_rec.c
+gcc -c -O -I. -I./../include  ../xa/xa.c
+gcc -c -O -I. -I./../include  ../xa/xa_db.c
+gcc -c -O -I. -I./../include  ../xa/xa_map.c
+/bin/rm -f libdb.a
+/usr/bin/ar cr libdb.a bt_compare.o bt_conv.o bt_curadj.o bt_cursor.o bt_delete.o bt_open.o bt_page.o bt_put.o bt_rec.o bt_recno.o bt_rsearch.o bt_search.o bt_split.o bt_stat.o btree_auto.o db.o db_appinit.o db_am.o db_apprec.o db_auto.o db_byteorder.o db_conv.o db_dispatch.o db_dup.o db_err.o db_iface.o db_join.o db_log2.o db_overflow.o db_pr.o db_rec.o db_region.o db_ret.o db_salloc.o db_shash.o dbm.o hash.o hash_auto.o hash_conv.o hash_dup.o hash_func.o hash_page.o hash_rec.o hash_stat.o hsearch.o lock.o lock_conflict.o lock_deadlock.o lock_util.o lock_region.o log.o log_archive.o log_auto.o log_compare.o log_findckp.o log_get.o log_put.o log_rec.o log_register.o mp_bh.o mp_fget.o mp_fopen.o mp_fput.o mp_fset.o mp_open.o mp_pr.o mp_region.o mp_sync.o mutex.o os_abs.o os_alloc.o os_config.o os_dir.o os_fid.o os_fsync.o os_map.o os_oflags.o os_open.o os_rpath.o os_rw.o os_seek.o os_sleep.o os_spin.o os_stat.o os_tmpdir.o os_unlink.o txn.o txn_auto.o txn_rec.o xa.o xa_db.o xa_map.o 
+test ! -f /usr/bin/ranlib || /usr/bin/ranlib libdb.a
+gcc -c -O -I. -I./../include  ../db_archive/db_archive.c
+gcc -c -O -I. -I./../include  ../clib/err.c
+gcc -c -O -I. -I./../include  ../clib/getlong.c
+gcc -o db_archive  db_archive.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_checkpoint/db_checkpoint.c
+gcc -o db_checkpoint  db_checkpoint.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_deadlock/db_deadlock.c
+gcc -o db_deadlock  db_deadlock.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_dump/db_dump.c
+gcc -o db_dump  db_dump.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_load/db_load.c
+gcc -o db_load  db_load.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_printlog/db_printlog.c
+gcc -o db_printlog  db_printlog.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_recover/db_recover.c
+gcc -o db_recover  db_recover.o err.o getlong.o libdb.a 
+gcc -c -O -I. -I./../include  ../db_stat/db_stat.c
+gcc -o db_stat  db_stat.o err.o getlong.o libdb.a 
+make[1]: Leaving directory '/var/www/test/testme/my_htdig/htdig-3.1.6/db/dist'
+make[1]: Entering directory '/var/www/test/testme/my_htdig/htdig-3.1.6/htlib'
+c++ -c  -DDEFAULT_CONFIG_FILE=\"/var/www/test/testme/my_htdig/htdig/conf/htdig.conf\" -I../htlib -I../htcommon -I../db/dist -I../include -g -O2 Configuration.cc
+In file included from Configuration.cc:13:0:
+htString.h:19:21: fatal error: ostream.h: No such file or directory
+ #include <ostream.h>
+                     ^
+compilation terminated.
+../Makefile.config:48: recipe for target 'Configuration.o' failed
+make[1]: *** [Configuration.o] Error 1
+make[1]: Leaving directory '/var/www/test/testme/my_htdig/htdig-3.1.6/htlib'
+Makefile:53: recipe for target 'all' failed
+make: *** [all] Error 1

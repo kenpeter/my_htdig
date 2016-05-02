@@ -1,0 +1,47 @@
+top_srcdir=		@top_srcdir@
+srcdir=			@srcdir@
+VPATH=			@srcdir@
+INSTALL=		@INSTALL@
+INSTALL_PROGRAM=	@INSTALL_PROGRAM@
+
+top_builddir= ..
+include $(top_builddir)/Makefile.config
+
+OBJS=		Endings.o EndingsDB.o Exact.o \
+		Fuzzy.o Metaphone.o Soundex.o \
+		SuffixEntry.o Synonym.o htfuzzy.o \
+		Substring.o Prefix.o Accents.o
+
+LIBOBJS=	Endings.o Exact.o Fuzzy.o Metaphone.o \
+		Soundex.o Synonym.o EndingsDB.o SuffixEntry.o \
+		Substring.o Prefix.o Accents.o
+
+TARGET=		htfuzzy
+LIBTARGET=	libfuzzy.a
+
+all:	$(TARGET) $(LIBTARGET)
+
+$(TARGET):	$(OBJS) $(HTLIBS)
+	$(CXX) -o $(TARGET) $(LDFLAGS) $(OBJS) $(LIBS)
+
+$(LIBTARGET):		$(LIBOBJS)
+	$(AR) rcv $(LIBTARGET) $?
+	$(RANLIB) $(LIBTARGET)
+
+install:	$(TARGET)
+	transform=@program_transform_name@
+	$(INSTALL_PROGRAM) $(TARGET) $(INSTALL_ROOT)$(BIN_DIR)/`echo $(TARGET) | sed '$(transform)'`
+
+clean:
+	rm -f $(TARGET) $(LIBTARGET) $(OBJS) *~ *.bak *% a.out *.orig core
+
+mostlyclean:
+	rm -f $(TARGET) *~ *.bak *% a.out *.orig core
+
+distclean:	clean
+	rm -f Makefile *.proj
+
+depend:
+	$(MAKEDEPEND) @CPPFLAGS@ $(CXXFLAGS) $(INCS) -- $(OBJS)
+
+htfuzzy.o:	$(top_builddir)/CONFIG

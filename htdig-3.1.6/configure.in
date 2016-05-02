@@ -1,0 +1,203 @@
+# Configuration for ht://Dig 3.x
+# Copyright (c) 1995-2001 The ht://Dig Group
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+AC_INIT(htcommon/DocumentDB.cc)
+VERSION=`cat ${srcdir}/.version`
+AM_INIT_AUTOMAKE([htdig], $VERSION)
+AC_PREREQ(2.13)
+
+AC_CONFIG_HEADER(include/htconfig.h)
+AC_PREFIX_DEFAULT(/opt/www/htdig)
+HTDIG_TOP=`pwd`
+AC_SUBST(HTDIG_TOP)
+
+dnl Get any --with or --disable flags now
+dnl This looks a little messy, but it's word-wrapping problems :-(
+AC_ARG_ENABLE(zlib,[  --disable-zlib          do not compile with zlib support],
+	WITH_ZLIB=$enableval, WITH_ZLIB="yes")
+
+AC_ARG_WITH(config-dir, [  --with-config-dir=DIR  where your config directory is [default=$ac_default_prefix/conf]],
+ CONFIG_DIR="$withval", CONFIG_DIR='${prefix}/conf')
+AC_SUBST(CONFIG_DIR)
+
+AC_ARG_WITH(common-dir, [  --with-common-dir=DIR  where your common directory is [default=$ac_default_prefix/common]],
+ COMMON_DIR="$withval", COMMON_DIR='${prefix}/common')
+AC_SUBST(COMMON_DIR)
+
+AC_ARG_WITH(database-dir, [  --with-database-dir=DIR  where your database directory is [default=$ac_default_prefix/db]],
+ DATABASE_DIR="$withval", DATABASE_DIR='${prefix}/db')
+AC_SUBST(DATABASE_DIR)
+
+AC_ARG_WITH(default-config-file, [  --with-default-config-file=FILE Where the various programs will look for a configuration file  [default=$ac_default_prefix/conf/htdig.conf]],
+ DEFAULT_CONFIG_FILE="$withval", DEFAULT_CONFIG_FILE='${CONFIG_DIR}/htdig.conf')
+AC_SUBST(DEFAULT_CONFIG_FILE)
+
+AC_ARG_WITH(cgi-bin-dir, [  --with-cgi-bin-dir=DIR  where your cgi-bin directory is  [default=/opt/www/cgi-bin]],
+ CGIBIN_DIR="$withval", CGIBIN_DIR='/opt/www/cgi-bin')
+AC_SUBST(CGIBIN_DIR)
+
+AC_ARG_WITH(image-dir, [  --with-image-dir=DIR    where the ht://Dig images are installed [default=/opt/www/htdocs/htdig]],
+ IMAGE_DIR="$withval", IMAGE_DIR='/opt/www/htdocs/htdig')
+AC_SUBST(IMAGE_DIR)
+
+AC_ARG_WITH(search-dir, [  --with-search-dir=DIR   where the sample search form should be installed [default=/opt/www/htdocs/htdig]],
+ SEARCH_DIR="$withval", SEARCH_DIR='/opt/www/htdocs/htdig')
+AC_SUBST(SEARCH_DIR)
+
+AC_ARG_WITH(image-url-prefix, [  --with-image-url-prefix=LOCATION   the URL path to the installed images [default=/htdig]],
+ IMAGE_URL_PREFIX="$withval", IMAGE_URL_PREFIX='/htdig')
+AC_SUBST(IMAGE_URL_PREFIX)
+
+AC_ARG_WITH(search-form, [  --with-search-form=FILE   the name for the sample search form [default=search.html]],
+ SEARCH_FORM="$withval", SEARCH_FORM='search.html')
+AC_SUBST(SEARCH_FORM)
+
+AC_ARG_WITH(rx, [  --with-rx  with system rx instead of regex [default=no]],
+ WITH_RX="$withval", WITH_RX='no')
+
+dnl While we're at it, let's work out the program transformations
+AC_ARG_PROGRAM
+
+echo configuring ht://Dig version $VERSION
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_RANLIB
+AC_PATH_PROG(AR, ar, ar)
+AC_PATH_PROG(SHELL, sh, /bin/sh)
+AC_PATH_PROG(SED, sed, /bin/sed)
+AC_PATH_PROG(SORT, sort, /bin/sort)
+AC_PATH_PROG(FIND, find, /bin/find)
+AC_PATH_PROG(GUNZIP, gunzip, /bin/gunzip)
+AC_CHECK_PROGS(TAR, tar gtar gnutar, tar)
+AC_PATH_PROG(PDF_PARSER, acroread, /usr/local/bin/acroread)
+AC_PATH_PROG(SENDMAIL, sendmail, /usr/lib/sendmail, 
+   $PATH:/usr/libexec:/usr/sbin:/usr/lib:/usr/etc:etc)
+
+dnl Check for AIX problems
+AC_AIX
+
+dnl Checks for libraries.
+AC_CHECK_LIB(socket, socket)
+AC_CHECK_LIB(nsl, t_accept)
+if test $WITH_ZLIB = yes; then
+AC_CHECK_LIB(z, deflate)
+fi
+
+AC_SUBST(CXXFLAGS)dnl
+AC_SUBST(LDFLAGS)dnl
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_HEADER_TIME
+
+dnl More header checks--here use C++
+AC_LANG_CPLUSPLUS
+AC_CHECK_HEADERS(fcntl.h limits.h malloc.h sys/file.h sys/ioctl.h sys/time.h unistd.h getopt.h strings.h zlib.h alloca.h sys/select.h wait.h sys/wait.h malloc.h ostream.h iostream.h)
+AC_CHECK_HEADER(fstream.h,nofstream=0,nofstream=1)
+if test "x$nofstream" = "x1" ; then
+AC_MSG_ERROR([To compile ht://Dig, you will need a C++ library. Try installing libstdc++.])
+fi
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_LANG_C
+AC_C_CONST
+AC_STRUCT_TM
+dnl AC_CHECK_SIZEOF(int *) => SIZEOF_INT_P
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(strdup strerror strstr)
+AC_CHECK_FUNCS(localtime_r)
+dnl Check for timegm
+AC_CHECK_FUNCS(timegm mkstemp)
+
+dnl Replacements for the library functions (i.e. regex)
+dnl Regex is compiled by the C compiler so we need to do it before we switch
+if test $WITH_RX = yes; then
+ AC_CHECK_HEADER(rxposix.h, AC_DEFINE(USE_RX), WITH_RX='no')
+fi
+if test $WITH_RX = no; then
+AC_MSG_CHECKING(if we should use the included regex?)
+OLD_CFLAGS=$CFLAGS
+CFLAGS="$CFLAGS -I${srcdir}/htlib"
+AC_TRY_RUN([	#include "${srcdir}/htlib/regex.c"
+		int main() {
+		   regex_t re;
+		   return regcomp(&re, "ht.*Dig", REG_ICASE);
+		}
+		],
+  [AC_MSG_RESULT(yes);LIBOBJS="$LIBOBJS regex.${ac_objext}"],
+  [AC_MSG_RESULT(no);AC_DEFINE(HAVE_BROKEN_REGEX)],
+  [AC_MSG_RESULT(unknown);AC_DEFINE(HAVE_BROKEN_REGEX)]
+)
+CFLAGS=$OLDCFLAGS
+fi
+AC_SUBST(LIBOBJS)
+
+dnl These tests need to be run through the c++ compiler
+AC_LANG_CPLUSPLUS
+AC_MSG_CHECKING(whether we need gethostname() prototype?)
+AC_TRY_COMPILE([#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <sys/ioctl.h>
+#include <sys/uio.h>
+#include <sys/file.h>
+#include <fcntl.h>
+#include <netdb.h>
+#include <stdlib.h>
+extern "C" int gethostname(char *, int);],
+  [gethostname("sdsu.edu", (int) 8);],
+  [AC_MSG_RESULT(yes);AC_DEFINE(NEED_PROTO_GETHOSTNAME)],
+  [AC_MSG_RESULT(no)])
+
+AC_LANG_C
+AC_MSG_CHECKING(how to call getpeername?)
+for sock_t in 'struct sockaddr' 'void'; do
+for getpeername_length_t in 'size_t' 'int' 'unsigned int' 'long unsigned int' 'socklen_t'; do
+AC_TRY_COMPILE([#include <sys/types.h>
+#include <sys/socket.h>],
+[extern getpeername(int, $sock_t *, $getpeername_length_t *)],
+[ac_found=yes ; break 2],ac_found=no)
+done
+done
+  if test "$ac_found" = no; then
+    AC_MSG_WARN([can't determine argument type using size_t])
+    AC_DEFINE_UNQUOTED(GETPEERNAME_LENGTH_T, size_t)
+  else
+  AC_MSG_RESULT($getpeername_length_t)
+  AC_DEFINE_UNQUOTED(GETPEERNAME_LENGTH_T, $getpeername_length_t)
+  fi
+
+dnl Any final tests probably want the C compiler
+AC_LANG_C
+
+if test ! -d "./db"; then
+  mkdir db
+fi
+AC_CONFIG_SUBDIRS(db/dist)
+
+AC_OUTPUT(CONFIG Makefile Makefile.config htcommon/Makefile htlib/Makefile htdig/Makefile htmerge/Makefile htnotify/Makefile htfuzzy/Makefile htsearch/Makefile makedp, chmod +x makedp, echo timestamp > stamp-h)
+
+echo ""
+echo ""
+echo "Now you must run 'make' followed by 'make install'"
+echo ""

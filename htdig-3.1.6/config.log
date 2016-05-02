@@ -1,0 +1,228 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:580: checking for a BSD compatible install
+configure:636: checking whether build environment is sane
+configure:693: checking whether make sets ${MAKE}
+configure:739: checking for working aclocal
+configure:752: checking for working autoconf
+configure:765: checking for working automake
+configure:778: checking for working autoheader
+configure:791: checking for working makeinfo
+configure:944: checking for gcc
+configure:1057: checking whether the C compiler (gcc  ) works
+configure:1073: gcc -o conftest    conftest.c  1>&5
+configure:1099: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1104: checking whether we are using GNU C
+configure:1132: checking whether gcc accepts -g
+configure:1168: checking for c++
+configure:1200: checking whether the C++ compiler (c++  ) works
+configure:1216: c++ -o conftest    conftest.C  1>&5
+configure:1242: checking whether the C++ compiler (c++  ) is a cross-compiler
+configure:1247: checking whether we are using GNU C++
+configure:1275: checking whether c++ accepts -g
+configure:1309: checking for ranlib
+configure:1339: checking for ar
+configure:1375: checking for sh
+configure:1411: checking for sed
+configure:1447: checking for sort
+configure:1483: checking for find
+configure:1519: checking for gunzip
+configure:1557: checking for tar
+configure:1590: checking for acroread
+configure:1626: checking for sendmail
+configure:1661: checking how to run the C preprocessor
+configure:1741: checking for AIX
+configure:1766: checking for socket in -lsocket
+configure:1813: checking for t_accept in -lnsl
+configure:1861: checking for deflate in -lz
+configure:1911: checking for ANSI C header files
+configure:2015: checking whether time.h and sys/time.h may both be included
+configure:2058: checking how to run the C++ preprocessor
+configure:2104: checking for fcntl.h
+configure:2104: checking for limits.h
+configure:2104: checking for malloc.h
+configure:2104: checking for sys/file.h
+configure:2104: checking for sys/ioctl.h
+configure:2104: checking for sys/time.h
+configure:2104: checking for unistd.h
+configure:2104: checking for getopt.h
+configure:2104: checking for strings.h
+configure:2104: checking for zlib.h
+configure:2104: checking for alloca.h
+configure:2104: checking for sys/select.h
+configure:2104: checking for wait.h
+configure:2104: checking for sys/wait.h
+configure:2104: checking for malloc.h
+configure:2104: checking for ostream.h
+configure:2104: checking for iostream.h
+configure:2142: checking for fstream.h
+configure:2186: checking for working const
+configure:2261: checking whether struct tm is in sys/time.h or time.h
+configure:2298: checking for strdup
+configure:2298: checking for strerror
+configure:2298: checking for strstr
+configure:2353: checking for localtime_r
+configure:2408: checking for timegm
+configure:2408: checking for mkstemp
+configure:2502: checking if we should use the included regex?
+configure:2522: gcc -o conftest -g -O2 -I./htlib   conftest.c -lz  1>&5
+In file included from configure:2514:0:
+./htlib/regex.c:149:7: warning: conflicting types for built-in function 'malloc'
+ char *malloc ();
+       ^
+./htlib/regex.c:150:7: warning: conflicting types for built-in function 'realloc'
+ char *realloc ();
+       ^
+In file included from ./htlib/regex.c:212:0,
+                 from configure:2514:
+./htlib/gregex.h:530:0: warning: "__restrict_arr" redefined
+ #define __restrict_arr
+ ^
+In file included from /usr/include/features.h:364:0,
+                 from /usr/include/x86_64-linux-gnu/sys/types.h:25,
+                 from ./htlib/regex.c:46,
+                 from configure:2514:
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:370:0: note: this is the location of the previous definition
+ # define __restrict_arr __restrict
+ ^
+In file included from configure:2514:0:
+./htlib/regex.c: In function 'regex_compile':
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:2437:33: note: in expansion of macro 'FREE_STACK_RETURN'
+       if (!COMPILED_BUFFER_VAR) FREE_STACK_RETURN (REG_ESPACE);
+                                 ^
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:2498:17: note: in expansion of macro 'FREE_STACK_RETURN'
+                 FREE_STACK_RETURN (REG_BADRPT);
+                 ^
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:2531:36: note: in expansion of macro 'FREE_STACK_RETURN'
+                     if (p == pend) FREE_STACK_RETURN (REG_EESCAPE);
+                                    ^
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:2638:28: note: in expansion of macro 'FREE_STACK_RETURN'
+             if (p == pend) FREE_STACK_RETURN (REG_EBRACK);
+                            ^
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:3641:26: note: in expansion of macro 'FREE_STACK_RETURN'
+           if (p == pend) FREE_STACK_RETURN (REG_EESCAPE);
+                          ^
+./htlib/regex.c:2261:11: warning: incompatible implicit declaration of built-in function 'free'
+   return (free (compile_stack.stack), value)
+           ^
+./htlib/regex.c:4165:5: note: in expansion of macro 'FREE_STACK_RETURN'
+     FREE_STACK_RETURN (REG_EPAREN);
+     ^
+./htlib/regex.c: In function 're_compile_fastmap':
+./htlib/regex.c:4867:11: warning: incompatible implicit declaration of built-in function 'abort'
+           abort (); /* We have listed all the cases.  */
+           ^
+./htlib/regex.c: In function 're_match_2_internal':
+./htlib/regex.c:7199:11: warning: incompatible implicit declaration of built-in function 'abort'
+           abort ();
+           ^
+./htlib/regex.c: In function 'regcomp':
+./htlib/regex.c:7735:33: warning: incompatible implicit declaration of built-in function 'strlen'
+   ret = regex_compile (pattern, strlen (pattern), syntax, preg);
+                                 ^
+./htlib/regex.c:7749:4: warning: incompatible implicit declaration of built-in function 'free'
+    free (preg->fastmap);
+    ^
+./htlib/regex.c: In function 'regexec':
+./htlib/regex.c:7786:13: warning: incompatible implicit declaration of built-in function 'strlen'
+   int len = strlen (string);
+             ^
+./htlib/regex.c:7828:7: warning: incompatible implicit declaration of built-in function 'free'
+       free (regs.start);
+       ^
+./htlib/regex.c: In function 'regerror':
+./htlib/regex.c:7859:5: warning: incompatible implicit declaration of built-in function 'abort'
+     abort ();
+     ^
+./htlib/regex.c:7863:14: warning: incompatible implicit declaration of built-in function 'strlen'
+   msg_size = strlen (msg) + 1; /* Includes the null.  */
+              ^
+./htlib/regex.c: In function 'regfree':
+./htlib/regex.c:7894:5: warning: incompatible implicit declaration of built-in function 'free'
+     free (preg->buffer);
+     ^
+configure:2549: checking whether we need gethostname() prototype?
+configure:2569: c++ -c -g -O2  conftest.C 1>&5
+configure:2563:39: error: conflicting declaration of C function 'int gethostname(char*, int)'
+ extern "C" int gethostname(char *, int);
+                                       ^
+In file included from /usr/include/features.h:364:0,
+                 from /usr/include/unistd.h:25,
+                 from configure:2552:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:344:1: note: previous declaration 'int gethostname(char*, size_t)'
+ __NTH (gethostname (char *__buf, size_t __buflen))
+ ^
+configure: In function 'int main()':
+configure:2565:32: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]
+ gethostname("sdsu.edu", (int) 8);
+                                ^
+configure: failed program was:
+#line 2551 "configure"
+#include "confdefs.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <sys/ioctl.h>
+#include <sys/uio.h>
+#include <sys/file.h>
+#include <fcntl.h>
+#include <netdb.h>
+#include <stdlib.h>
+extern "C" int gethostname(char *, int);
+int main() {
+gethostname("sdsu.edu", (int) 8);
+; return 0; }
+configure:2591: checking how to call getpeername?
+configure:2603: gcc -c   conftest.c 1>&5
+configure: In function 'main':
+configure:2599:8: error: conflicting types for 'getpeername'
+ extern getpeername(int, $sock_t *, $getpeername_length_t *)
+        ^
+In file included from configure:2597:0:
+/usr/include/x86_64-linux-gnu/sys/socket.h:141:12: note: previous declaration of 'getpeername' was here
+ extern int getpeername (int __fd, __SOCKADDR_ARG __addr,
+            ^
+configure: failed program was:
+#line 2595 "configure"
+#include "confdefs.h"
+#include <sys/types.h>
+#include <sys/socket.h>
+int main() {
+extern getpeername(int, struct sockaddr *, size_t *)
+; return 0; }
+configure:2603: gcc -c   conftest.c 1>&5
+configure: In function 'main':
+configure:2599:8: error: conflicting types for 'getpeername'
+ extern getpeername(int, $sock_t *, $getpeername_length_t *)
+        ^
+In file included from configure:2597:0:
+/usr/include/x86_64-linux-gnu/sys/socket.h:141:12: note: previous declaration of 'getpeername' was here
+ extern int getpeername (int __fd, __SOCKADDR_ARG __addr,
+            ^
+configure: failed program was:
+#line 2595 "configure"
+#include "confdefs.h"
+#include <sys/types.h>
+#include <sys/socket.h>
+int main() {
+extern getpeername(int, struct sockaddr *, int *)
+; return 0; }
+configure:2603: gcc -c   conftest.c 1>&5

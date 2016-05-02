@@ -1,0 +1,504 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+	<title>
+	  ht://Dig: Mirrors
+	</title>
+        <link rel="stylesheet" href="htdig.css">
+  </head>
+  <body bgcolor="#eef7ff">
+	<h1>
+	How to Mirror the ht://Dig Project
+	</h1>
+	<p>
+	  ht://Dig Copyright &copy; 1995-2002 <a href="THANKS.html">The ht://Dig Group</a><br>
+	  Please see the file <a href="COPYING">COPYING</a> for
+	  license information.
+	</p>
+	<hr size="4" noshade>
+    <p class="main">
+    Since ht://Dig is gaining popularity, it's good the project gets mirrored.
+    Mirroring is of vital importance for improved availability, reponse time and of
+    course, to save bandwidth for the
+    main server. This document is about how to mirror all or a part of the
+    ht://Dig web and FTP sites. Make sure you read it all.<p>There are four
+    sites you can mirror:
+    <ol>
+      <li>The ht://Dig web site (main and development)</li>
+      <li>The ht://Dig files web site (formerly reachable by FTP)</li>
+      <li>The ht://Dig patch FTP site</li>
+      <li>The source code development trees (also known as CVS repository)</li>
+    </ol>
+    Note: since november 2001, SourceForge has stopped hosting project FTP services.
+
+    <h5>Some Words about CVS and Wget</h5>
+    <p class="main">
+    Developing source code with possibly a large number of contributors spread around the world
+    is a tedious task and requires good coordination. This coordination is provided by a piece
+    of software known as Concurrent Versions System (CVS). This is why we use CVS for
+    software development. But the web site is frequently updated by developers too; text
+    is added, changed or deleted, new pages created etc. For the same reasons as developing
+    software, we placed the web site in a CVS <i>repository</i>.
+    More information on CVS can be found in the <a href="http://www.cvshome.org/docs/manual/">CVS online
+    documentation</a>. Note: There are a <i>lot</i> of options for use with CVS, which are not explained here.
+    It's merely a short howto on how to set up a local mirror of the ht://Dig project. You should use
+    version 1.10 or higher.
+    </p>
+    <p class="main">
+    Wget is a software package that enables you create a mirror (an exact copy of) a FTP or web site. It
+    is published under GNU license and should run on virtually every platform. If you don't like Wget,
+    you can try Mirror, which is a very good alternative for mirrorring FTP sites.
+    To learn more on wget, see the <a href="http://www.gnu.org/directory/wget.html">Wget web site</a>.
+    You should use version 1.7 or higher.</p>
+    <p class="main">
+    Alas, SourceForge does not provide an Rsync service and as far as we know, they are not intend to.</p>
+
+<br>
+    
+    <h5>Some Notes Before We Begin (in no specific order)</h5>
+    <p class="main">
+    <ul>
+      <li>For now, this is a Un*x howto only. CVS is known to works on NT/2000, but we have no reports
+      that Wget runs on those machines. Maybe later, things concerning W*nd*ws will be added.</li>
+      <li>We use U*nix notation of commands, like <code>cvs(1)</code> where <code>(1)</code> means that
+      information can be found in section one of the man pages.
+      <li>The development pages are no longer on their own; they are combined with the main web site.</li>
+      <li>We assume you have a up-and-running web server like <a href="http://httpd.apache.org/">Apache</a>.</li>
+      <li>We assume you have a up-and-running FTP server like <a href="http://www.wu-ftpd.org/">Wu-FTPd</a>.
+      Anonymous FTP access is chroot-ed (change-rooted). Forget it if you don't know what
+      we're talking about.</li>
+      <li>To fully implement a mirror you'll need to activate server side includes on your web server.
+      Your system administrator knows more. See the examples at the end.</li>
+      <li>If you've mirrored the ht://Dig patch FTP site, you can make these files visible on your web server
+      by setting an Alias in your web server configuration file, and you'll need to activate directory
+      indexing. See the examples at the end.</li>
+      <li>As a mirror, you are expected to update at least once a day--with the exception of new releases,
+      daily changes are usually very small.
+      <li>We'll make use of a fictitious domain named <code>htdigmirror.org</code>. The WWW document
+      root is <code>/home/htdigmirror/www/</code>
+      <li>Please make sure that you interprete the commands presented here well. Some commands are
+      long and browsers tend to break it in two or three pieces.
+      <li>After setting up your mirror, please e-mail 
+      &lt;<a href="mailto:htdig-dev@lists.sourceforge.net">htdig-dev@lists.sourceforge.net</a>&gt;
+      to notify the developers. If you're not on the developers list, you will get an e-mail
+      stating that your message is queued for moderation. Eventually it will be delivered
+      to the list.</li>
+      <li>This is just <i>a</i> way of implementing a mirror. You can surely come up with good
+      alternatives.</li>
+    </ul>
+    </p>
+<br>
+
+    <h5>Setting up a Copy of the ht://Dig website</h5>
+
+
+    <i>Step 1</i><br>
+    <blockquote>
+    You need to have <code>cvs(1)</code> installed on your system. It will not work without. Check out:<br>
+      <blockquote><code>man&nbsp;cvs</code></blockquote>
+    If your don't have it on your box, ask the administrator to install it for you.</blockquote>
+    
+    
+    <br>
+    <i>Step 2</i><br>
+    <blockquote>You'll need to gain anonymous access at the CVS repository.<br>
+      <blockquote><code>
+        cvs&nbsp;-d:pserver:anonymous@cvs.htdig.sourceforge.net:/cvsroot/htdig&nbsp;login
+      </code></blockquote>
+    When asked for a password, leave it blank (i.e. press the enter key). You only need to do this
+    once since <code>cvs(1)</code> will create a CVS password file <code>.cvspass</code> in your home
+    directory that will be used in future invocations.</blockquote>
+
+
+    <br>
+    <i>Step 3</i><br>
+    <blockquote>Create a directory where you will place your local copy. You can
+    pick any legal name you want, but for the sake of simplicity we'll name
+    the directory <code>htdig</code>. Note that the <code>cvs(1)</code> command later on will
+    create another directory under the just created <code>htdig</code> directory.<br>
+      <blockquote><code>
+        cd&nbsp;/home/htdigmirror/www/<br>
+        mkdir&nbsp;htdig
+      </code></blockquote>
+    </blockquote>
+
+
+    <br>
+    <i>Step 4</i><br>
+    <blockquote>Change to that directory.<br>
+      <blockquote><code>
+        cd&nbsp;htdig
+      </code></blockquote>
+    </blockquote>
+
+
+    <br>
+    <i>Step 5</i><br>
+    <blockquote>Check out the htdig module. In newbie-speak: create a local copy of the ht://Dig web site.<br>
+      <blockquote><code>
+        cvs&nbsp;-z6&nbsp;-d:pserver:anonymous@cvs.htdig.sourceforge.net:/cvsroot/htdig&nbsp;\<br>
+        co&nbsp;-d&nbsp;maindocs&nbsp;maindocs
+      </code></blockquote>
+    (Note the backslash at the end of the first line of the command. In Un*x this is the <i>concatenation metacharacter</i>,
+    which means that the two code lines should read as one.)
+    So what does the line of code mean? We are accessing the ht://Dig repository at
+    <code>cvs.htdig.sourceforge.net</code> in directory <code>/cvsroot/htdig</code>
+    via the <i>password server</i> (pserver) and checking out (co) module <i>maindocs</i>
+    using <code>gzip(1)</code> compression (-z6) and place it in a local directory
+    called <code>maindocs</code>. We could have left out the <code>-d maindocs</code>
+    as this is the default. You will see some output on your terminal.
+    The <code>cvs(1)</code> command has created a sub directory named <code>maindocs</code>.
+    </blockquote>
+
+
+    <br>
+    <i>Step 6</i><br>
+    <blockquote>Now you need to adapt your web server configuration file. Mabye your need superuser privileges to
+    do that. Don't forget to turn on server side includes (SSI). At the end there's an example configuration file
+    for use with Apache <i>virtual hosts</i>. Start your favorite browser and surf to the web page. It should be
+    something like
+      <a href="http://www.htdigmirror.org/htdig/maindocs/">http://www.htdigmirror.org/htdig/maindocs/</a>.
+    You did restart your web server, didn't you?
+    </blockquote>
+
+
+    <br>
+    <i>Step 7</i><br>
+    <blockquote>Ready. You've set up a mirror! Please inform the developers
+    at &lt;<a href="mailto:htdig-dev@lists.sourceforge.net">htdig-dev@lists.sourceforge.net</a>&gt;
+    about your mirror.</blockquote>
+<br>
+
+    <h5>Updating Your Local Copy of the ht:/Dig Web Site</h5>
+
+    <i>Step 1</i><br>
+    <blockquote>You already have <code>cvs(1)</code> otherwise you couldn't have created the initial
+    copy in the first place.</blockquote>
+
+
+    <br>
+    <i>Step 2</i><br>
+    <blockquote>You already have anonymous CVS access.</blockquote>
+
+
+    <br>
+    <i>Step 3</i><br>
+    <blockquote>Change to the directory that holds the copy of the ht://Dig web site<br>
+      <blockquote><code>
+        cd&nbsp;/home/htdigmirror/www/htdig/maindocs
+      </code></blockquote>
+    Note that you have to <code>cd(1)</code> to the directory created by <code>cvs(1)</code>!</blockquote>
+
+
+    <br>
+    <i>Step 4</i><br>
+    <blockquote>Start the update by executing<br>
+      <blockquote><code>
+        cvs&nbsp;-z6&nbsp;-q&nbsp;update&nbsp;-Pd
+      </code></blockquote>
+    You will see rows with updated files. If there's nothing to update, you
+    will see a new command prompt only; there is no output.</blockquote>
+
+
+    <br>
+    <i>Step 5</i><br>
+    <blockquote>So you've updated your local copy of the ht://dig web site, but you don't
+    want to do that every day. Solution: Set up a <code>crontab(1)</code> entry to update your mirror every day.
+    Example of an entry:<br>
+      <blockquote><code>
+        40&nbsp;2&nbsp;*&nbsp;*&nbsp;*&nbsp;cd&nbsp;/home/htdigmirror/www/htdig/maindocs&nbsp;&amp;&amp;&nbsp;/usr/bin/cvs&nbsp;\
+        -z6&nbsp;-q&nbsp;update&nbsp;-Pd
+      </code></blockquote>
+    This will run the command every 2:40 AM. Depending on your version of <code>cron(8)</code>,
+    you will get a e-mail message containing the output of the command ran. If you do not want
+    any output, you could use<br>
+      <blockquote><code>
+        40&nbsp;2&nbsp;*&nbsp;*&nbsp;*&nbsp;(cd&nbsp;/home/htdigmirror/www/htdig/maindocs&nbsp;&amp;&amp;&nbsp;/usr/bin/cvs&nbsp;\
+        -z6&nbsp;-q&nbsp;update&nbsp;-Pd)&nbsp;&gt;/dev/null&nbsp;2&gt;&amp;1
+      </code></blockquote>
+    It should work on <code>sh(1)</code> oriented shells.
+    </blockquote>
+
+
+    <br>
+    <i>Step 6</i><br>
+    <blockquote>Ready. Please inform the developers
+    at &lt;<a href="mailto:htdig-dev@lists.sourceforge.net">htdig-dev@lists.sourceforge.net</a>&gt;
+    about your mirror.</blockquote>
+<br>
+
+
+    <h5>Setting up a Mirror of the ht://Dig Files Web Site</h5>
+    
+
+    <p class="main">
+    In the early days (hmm, not so early for that matter), there was an ht://Dig FTP site that housed
+    release tarballs, binaries, snapshots and contributed work. The FTP service is abandoned but fortunately,
+    you can access them via the web; the <a href="http://www.htdig.org/files/">/files</a> directory. Since
+    it's web access, <code>wget(1)</code> is used for retrieval. Note that you cannot copy the files directory
+    via cvs and that there is no real files directory on the ht://Dig Web Site.</p>
+
+    <i>Step 1</i>
+    <blockquote>Make sure you have installed <code>wget(1)</code> and read the documentation.
+    We're going to place the copy of the files into the anonymous FTP area. That way, you can
+    have people access the files by FTP and by web.
+    </blockquote>
+
+
+    <br>
+    <i>Step 2</i><br>
+    <blockquote>Change to the public directory of the anonymous FTP area and create a sub directory
+    for holding the files.<br>
+      <blockquote><code>
+        cd&nbsp;/home/ftp/pub<br>
+        mkdir&nbsp;ftp.htdig.org<br>
+        cd&nbsp;ftp.htdig.org<br>
+      </code></blockquote>
+    The files will be placed in the <i>files</i> directory (as you will see shortly).
+    </blockquote>
+
+
+    <br>
+    <i>Step 3</i><br>
+    <blockquote>Copy the files.<br>
+      <blockquote><code>
+        wget&nbsp;-nv&nbsp;-m&nbsp;-np&nbsp;-nH&nbsp;-p&nbsp;http://www.htdig.org/files
+      </code></blockquote>
+    The -nv will turn off verbose output, but it will not be very quiet. The -m option tells <code>wget(1)</code> to
+    turn on options suitable for mirroring (as in -r -N -l inf -nr). The -np (no-parent) option will prevent
+    ascending to the parent directory. The option -nH disables generation of host-prefixed directories, so
+    you will not get a directory called www.htdig.org. And last, -p causes <code>wget(1)</code> to download all the files that
+    are necessary to properly display a given HTML page.<br>
+    This combination of options will result in a directory called files that holds a copy of
+    <a href="http://www.htdig.org/files/">http://www.htdig.org/files/</a>
+    </blockquote>
+
+    
+    <br>
+    <i>Step 4</i><br>
+    <blockquote>
+    There is one drawback; since the files directory at the ht://Dig web site holds no index.html file, the
+    web server over there will create one on-the-fly. Even more, this generated file creates
+    links to itself that will display the files in all kinds of sort order like name, last modified, size
+    and description. (These links look like ?N=D, ?M=A etc.) We will have to remove them as they contain
+    links calculated for the ht://Dig web site and will probably not match your copy.
+    Also, the sites' robots.txt file is copied. We don't need it eighter. So we do
+      <blockquote><code>
+        rm&nbsp;-f&nbsp;robots.txt<br>
+        cd&nbsp;files<br>
+        find&nbsp;.&nbsp;-name&nbsp;index.html&nbsp;-print&nbsp;-exec&nbsp;rm&nbsp;-f&nbsp;{}&nbsp;\;<br>
+        find&nbsp;.&nbsp;-name&nbsp;"*=*"&nbsp;-print&nbsp;-exec&nbsp;rm&nbsp;-f&nbsp;{}&nbsp;\;<br>
+      </code></blockquote>
+    (Note the double quotes round *=*!.) This will traverse the files directory and delete any index.html
+    or ?N=D-like files. As a bonus, it will print out the files deleted.
+    </blockquote>
+
+
+    <br>
+    <i>Step 5</i><br>
+    <blockquote>Create an Alias in your web server configuration file so that
+    this mirror can be accessed by web. We'll give an Alias line for Apache:<br>
+      <blockquote><code>
+        Alias&nbsp;/htdig/maindocs/files&nbsp;&quot;/home/ftp/pub/ftp.htdig.org/files&quot;
+      </code></blockquote>
+    Files should now be accessible via
+    <a href="http://www.htdigmirror.org/htdig/maindocs/files/">http://www.htdigmirror.org/htdig/maindocs/files/</a>.
+    Don't forget to turn on directory indexing!
+    </blockquote>
+
+    <br>
+    <i>Step 6</i><br>
+    <blockquote>Ready. Please inform the developers
+    at &lt;<a href="mailto:htdig-dev@lists.sourceforge.net">htdig-dev@lists.sourceforge.net</a>&gt;
+    about your mirror.</blockquote>
+<br>
+
+
+    <h5>Updating your mirror of the ht://Dig Files Web Site</h5>
+    <p class="main">
+    This is very simple. Repeat step 2, 3 and 4 of "Setting up a Mirror of the ht://Dig Files Web Site". But
+    there is one drawback (again). As <code>wget(1)</code> uses the links from the generated index.html files
+    as pointers to other files to be fetched, it will leave files that are not in that index.html untouched.
+    As a result, within a few weeks you will have a lot of snapshot files on your mirror and you'll need to
+    remove them by hand.
+    </p>
+<br>
+
+    
+    <h5>Setting up a Mirror of the ht://Dig Patch Site</h5>
+    
+    <p class="main">
+    Making a mirror of the patch site involves the use of <code>wget(1)</code> and is similar to creating a copy
+    of the files web site.</p>
+
+    <i>Step 1</i><br>
+    <blockquote>Create a suitable direoctory in the anonymous FTP area.<br>
+      <blockquote><code>
+        cd&nbsp;/home/ftp/pub<br>
+        mkdir&nbsp;ftp.ccsf.org<br>
+        cd&nbsp;ftp.ccsf.org<br>
+      </code></blockquote>
+    Here we will place the files.
+    </blockquote>
+
+
+    <br>
+    <i>Step 2</i><br>
+    <blockquote>Copy the files.<br>
+      <blockquote><code>
+        wget&nbsp;-nv&nbsp;-m&nbsp;-np&nbsp;-nH&nbsp;-p&nbsp;ftp://ftp.ccsf.org/htdig-patches
+      </code></blockquote>
+    This combination of options will result in a directory called htdig-patches that holds a copy of
+    <a href="ftp://ftp.ccsf.org/htdig-patches">ftp://ftp.ccsf.org/htdig-patches</a>
+    </blockquote>
+
+    <br>
+    <i>Step 3</i><br>
+    <blockquote>
+    For some reason, <code>wget(1)</code> leaves .listing files behind in your copy. Although they don't do any
+    harm, it's nice to get rid of them.
+      <blockquote><code>
+        find&nbsp;.&nbsp;-name&nbsp;.listing&nbsp;-print&nbsp;-exec&nbsp;rm&nbsp;-f&nbsp;{}&nbsp;\;<br>
+      </code></blockquote>
+    This will traverse the htdig-patches directory and delete any .listing files. It will also delete the
+    one in the top directory.
+    </blockquote>
+
+    <br>
+    <i>Step 4</i><br>
+    <blockquote>Create an Alias in your web server configuration file so that
+    this mirror can be accessed by web. We'll give an Alias line for Apache:<br>
+      <blockquote><code>
+        Alias&nbsp;/htdig/maindocs/htdig-patches&nbsp;&quot;/home/ftp/pub/ftp.ccsf.org/htdig-patches&quot;
+      </code></blockquote>
+    Files should now be accessible via
+    <a href="http://www.htdigmirror.org/htdig/maindocs/htdig-patches/">http://www.htdigmirror.org/htdig/maindocs/htdig-patches/</a>.
+    Don't forget to turn on directory indexing!
+    </blockquote>
+
+    <br>
+    <i>Step 6</i><br>
+    <blockquote>Ready. Please inform the developers
+    at &lt;<a href="mailto:htdig-dev@lists.sourceforge.net">htdig-dev@lists.sourceforge.net</a>&gt;
+    about your mirror.</blockquote>
+<br>
+
+    <h5>Updating your mirror of the ht://Dig Patch Web Site</h5>
+    <p class="main">
+    This is very simple. Repeat step 1, 2 and 3 of "Setting up a Mirror of the ht://Dig Patch Site".
+    </p>
+<br>
+
+
+    <h5>Setting up a Copy of the Source Code Development Trees (CVS Repository)</h5>
+
+    <p class="main">
+    There are two trees you can checkout: the 3.1 branch and 3.2beta branch.
+    Because you know the procedure now, we'll just give the commands.<br>
+      <blockquote><code>
+        cd&nbsp;/home/htdigmirror/www/htdig<br>
+        cvs&nbsp;-z6&nbsp;-d:pserver:anonymous@cvs.htdig.sourceforge.net:/cvsroot/htdig&nbsp;\<br>
+	co&nbsp;-d&nbsp;htdig-3-1-x&nbsp;-r&nbsp;htdig-3-1-x&nbsp;htdig<br>
+        cvs&nbsp;-z6&nbsp;-d:pserver:anonymous@cvs.htdig.sourceforge.net:/cvsroot/htdig&nbsp;\<br>
+	co&nbsp;-d&nbsp;htdig-3-2-x&nbsp;-r&nbsp;htdig-3-2-x&nbsp;htdig<br>
+      </code></blockquote>
+    <p class="main">
+    (the -r option will checkout a specific <i>revision</i>). You'll get two subdirectories named
+    <code>htdig-3-1-x</code> and <code>htdig-3-2-x</code> containing the CVS trees.
+    The trees can be accessed through web via
+    <a href="http://www.htdigmirror.org/htdig/htdig-3-1-x">http://www.htdigmirror.org/htdig/htdig-3-1-x/</a>
+    and
+    <a href="http://www.htdigmirror.org/htdig/htdig-3-2-x">http://www.htdigmirror.org/htdig/htdig-3-2-x/</a>
+    respectively.
+    You'll need to adapt your web server configuration file so that it will show directory indexes.
+    See examples at the end.
+    </p>
+
+    <p class="main">
+    <strong>Note:</strong> If you leave out the -r option, you will check out
+    the main branch of the htdig source tree, but this branch has been largely
+    untouched since February 2000. You must use the -r option.
+    </p>
+
+    <p class="main">
+    <strong>Note:</strong>There is currently no link from the ht://Dig Web Site to
+    the CVS trees, so people cannot access it by your mirror. You have to tell them
+    otherwise.
+    </p>
+<br>
+
+
+    <h5>Updating the Copy of the Source Code Development Trees</h5>
+    <p class="main">
+    Well, this just like updating the ht://Dig web site. You'll need to goto the
+    right directory and issue the <code>cvs(1)</code> update command.
+    </p>
+<br>
+
+
+    <h5>E-mail addresses</h5>
+
+    <ul>
+    <li>Questions concerning the ht://Dig Web Site, the ht://Dig Files Site and the Source Code
+    Development Trees can be addressed to Geoff Hutchison
+    &lt;<a href="mailto:ghutchis@wso.williams.edu">ghutchis@wso.williams.edu</a>&gt;</li>
+    <li>The ht://Dig Patch Site is maintained by Joe R. Jah
+    &lt;<a href="mailto:jjah@cloud.ccsf.cc.ca.us">jjah@cloud.ccsf.cc.ca.us</a>&gt;</li>
+    </ul>
+<br>
+
+
+    <h5>Further conciderations</h5>
+    <p class="main">
+    One can use <code>wget(1)</code> to copy the ht://Dig main web site, althought <code>cvs(1)</code> is surely
+    efficiently and faster. If you decide to copy the ht://Dig main web site with <code>wget(1)</code>, note
+    that you will make a copy of the /files directory automaticly. The /files directory is currently about
+    70 MB.
+<br>
+
+<h5>Example Configuration Files</h5><br>
+<p class="main">
+Apache 1.3.x example configuration file (part) for ht://Dig mirror sites.
+For use with virtual hosts:</p>
+
+<pre># Host www.htdigmirror.org
+&lt;VirtualHost 1.2.3.4&gt;
+        ServerAdmin webmaster@htdigmirror.org
+        ServerName www.htdigmirror.org
+        DocumentRoot /home/htdigmirror/www
+        ErrorLog /home/htdigmirror/etc/error_log
+        TransferLog /home/htdigmirror/etc/access_log
+        
+        # Aliasing files directory to web site and activate fancy directory indexing
+        Alias /htdig/maindocs/files &quot;/home/ftp/pub/ftp.htdig.org/files&quot;
+        &lt;Directory /home/ftp/pub/ftp.htdig.org/files&gt;
+                Options Indexes
+        &lt;/Directory&gt;
+
+        # Aliasing patch directory to web site and activate fancy directory indexing
+        Alias /htdig/maindocs/htdig-patches &quot;/home/ftp/pub/ftp.ccsf.org/htdig-patches&quot;
+        &lt;Directory /home/ftp/pub/ftp.ccsf.org/htdig-patches&gt;
+                Options Indexes
+        &lt;/Directory&gt;
+        
+        # Activate Server Side Includes w/o Execute
+        &lt;Directory /home/htdigmirror/www/htdig/maindocs&gt;
+                Options IncludesNOEXEC
+        &lt;/Directory&gt;
+        
+        # Activate fancy directory indexing for browsing CVS tree
+        &lt;Directory /home/htdigmirror/www/htdig/htdig-3-1-x&gt;
+                Options Indexes
+        &lt;/Directory&gt;
+        &lt;Directory /home/htdigmirror/www/htdig/htdig-3-2-x&gt;
+                Options Indexes
+        &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</pre>
+
+	<hr size="4" noshade>
+
+	Last modified: $Date: 2002/01/31 23:37:04 $
+<br> 
+  </body>
+</html>
